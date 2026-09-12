@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock 3 - Workspace</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: { fontFamily: { sans: ['Geist','sans-serif'], mono: ['Geist Mono','monospace'] } } }
+}
+</script>
+</head>
+<body class="bg-zinc-100 text-zinc-900 font-sans antialiased">
+
+<!-- Top bar -->
+<header class="bg-white border-b border-zinc-200">
+  <div class="max-w-[1440px] mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-semibold tracking-tight text-[15px]">Shortlist</span>
+      <span class="text-zinc-300">/</span>
+      <span class="text-sm text-zinc-600">Junior Full Stack Developer</span>
+      <span class="text-xs px-2 py-0.5 rounded-[10px] bg-blue-50 text-blue-700 border border-blue-100">TechNova Solutions</span>
+    </div>
+    <button class="text-sm font-medium px-4 py-2 rounded-[10px] bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+      New analysis
+    </button>
+  </div>
+</header>
+
+<div class="max-w-[1440px] mx-auto px-6 py-6 grid grid-cols-[260px_1fr_360px] gap-6 items-start">
+
+  <!-- Left sidebar -->
+  <aside class="space-y-4">
+
+    <div class="bg-white rounded-[10px] border border-zinc-200 p-4">
+      <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">Job description</h2>
+      <div class="space-y-3">
+        <div>
+          <div class="text-[11px] text-zinc-400 mb-1.5">Required</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">javascript</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">react</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">node.js</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">mongodb</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">rest apis</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">git</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200">html/css</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] text-zinc-400 mb-1.5">Nice to have</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-500">express</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-500">typescript</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-500">docker</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-zinc-50 border border-zinc-200 text-zinc-500">aws</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-[10px] border border-zinc-200 p-4">
+      <h2 class="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">JD audit</h2>
+      <div class="space-y-3">
+        <div>
+          <p class="text-[13px] text-zinc-800">"rockstar coder who ships fast"</p>
+          <p class="text-[12px] text-zinc-500 mt-0.5">Exclusionary phrasing; reads as a culture signal and deters qualified applicants.</p>
+          <p class="text-[12px] text-blue-700 mt-1">Try: "skilled developer comfortable with rapid iteration"</p>
+        </div>
+        <div class="border-t border-zinc-100 pt-3">
+          <p class="text-[13px] text-zinc-800">11 skills listed as required</p>
+          <p class="text-[12px] text-zinc-500 mt-0.5">Must-have list is narrow for a junior role.</p>
+          <p class="text-[12px] text-blue-700 mt-1">Move 3 skills to nice-to-have</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-[10px] border border-zinc-200 p-4 font-mono text-[11px] text-zinc-500 leading-relaxed">
+      18 resumes processed<br>
+      4.2s · hybrid engine · local
+    </div>
+
+  </aside>
+
+  <!-- Main: ranked list -->
+  <main class="bg-white rounded-[10px] border border-zinc-200">
+
+    <div class="px-5 py-4 border-b border-zinc-100 flex items-center justify-between">
+      <h2 class="text-sm font-semibold">Ranked candidates</h2>
+      <span class="text-xs text-zinc-400">sorted by overall fit</span>
+    </div>
+
+    <div class="divide-y divide-zinc-100">
+
+      <!-- Row 1 (selected) -->
+      <div class="px-5 py-4 flex items-center gap-4 bg-blue-50/50 border-l-2 border-blue-600 cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">1</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Ananya Sharma</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_07.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">react</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">node.js</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">mongodb</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">express</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">docker</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">aws</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">87.4</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 84.2 · sem 90.6</div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="px-5 py-4 flex items-center gap-4 hover:bg-zinc-50 transition-colors cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">2</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Rohan Mehta</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_03.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">javascript</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">react</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">node.js</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">mongodb</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">docker</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">aws</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">82.1</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 88.5 · sem 75.7</div>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="px-5 py-4 flex items-center gap-4 hover:bg-zinc-50 transition-colors cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">3</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Priya Nair</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_12.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">react</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">rest apis</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">node.js</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">mongodb</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">docker</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">78.9</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 71.3 · sem 86.5</div>
+        </div>
+      </div>
+
+      <!-- Row 4 -->
+      <div class="px-5 py-4 flex items-center gap-4 hover:bg-zinc-50 transition-colors cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">4</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Arjun Deshpande</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_15.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">javascript</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">react</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">node.js</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">mongodb</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">64.2</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 66.8 · sem 61.6</div>
+        </div>
+      </div>
+
+      <!-- Row 5 -->
+      <div class="px-5 py-4 flex items-center gap-4 hover:bg-zinc-50 transition-colors cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">5</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Sneha Kulkarni</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_09.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">git</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">javascript</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">react</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">node.js</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">58.7</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 52.4 · sem 65.0</div>
+        </div>
+      </div>
+
+      <!-- Row 6 -->
+      <div class="px-5 py-4 flex items-center gap-4 hover:bg-zinc-50 transition-colors cursor-pointer">
+        <span class="font-mono text-sm text-zinc-400 w-5">6</span>
+        <div class="w-36">
+          <div class="text-sm font-medium">Vikram Iyer</div>
+          <div class="font-mono text-[11px] text-zinc-400">resume_02.pdf</div>
+        </div>
+        <div class="flex-1 flex flex-wrap gap-1.5">
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">html/css</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">git</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">javascript</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">react</span>
+        </div>
+        <div class="text-right">
+          <div class="font-mono text-sm font-semibold">51.3</div>
+          <div class="font-mono text-[10px] text-zinc-500">kw 48.9 · sem 53.7</div>
+        </div>
+      </div>
+
+      <div class="px-5 py-3 text-center text-xs text-zinc-400">
+        12 more candidates, ranked 7 through 18
+      </div>
+    </div>
+  </main>
+
+  <!-- Right: candidate detail -->
+  <aside class="bg-white rounded-[10px] border border-zinc-200 p-5 space-y-5">
+
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="font-mono text-xs px-1.5 py-0.5 rounded-md bg-blue-600 text-white font-semibold">#1</span>
+        <h2 class="text-xl font-semibold tracking-tight">Ananya Sharma</h2>
+      </div>
+      <p class="font-mono text-[11px] text-zinc-400">resume_07.pdf · B.E. Computer Science, 2026</p>
+    </div>
+
+    <!-- Scores -->
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between items-baseline mb-1">
+          <span class="text-xs text-zinc-500">Overall fit</span>
+          <span class="font-mono text-sm font-semibold">87.4</span>
+        </div>
+        <div class="h-1.5 rounded-full bg-zinc-100"><div class="h-1.5 rounded-full bg-blue-600" style="width:87%"></div></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs text-zinc-500">Keyword</span>
+            <span class="font-mono text-xs font-semibold">84.2</span>
+          </div>
+          <div class="h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-emerald-600" style="width:84%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between items-baseline mb-1">
+            <span class="text-xs text-zinc-500">Semantic</span>
+            <span class="font-mono text-xs font-semibold">90.6</span>
+          </div>
+          <div class="h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-emerald-600" style="width:91%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section similarity -->
+    <div>
+      <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-2.5">Section similarity to JD</h3>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-zinc-600 w-20">Projects</span>
+          <div class="flex-1 h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-blue-600" style="width:82%"></div></div>
+          <span class="font-mono text-[11px] text-zinc-500 w-8 text-right">0.82</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-zinc-600 w-20">Experience</span>
+          <div class="flex-1 h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-blue-600" style="width:79%"></div></div>
+          <span class="font-mono text-[11px] text-zinc-500 w-8 text-right">0.79</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-zinc-600 w-20">Skills</span>
+          <div class="flex-1 h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-blue-600" style="width:74%"></div></div>
+          <span class="font-mono text-[11px] text-zinc-500 w-8 text-right">0.74</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-zinc-600 w-20">Education</span>
+          <div class="flex-1 h-1 rounded-full bg-zinc-100"><div class="h-1 rounded-full bg-blue-600" style="width:31%"></div></div>
+          <span class="font-mono text-[11px] text-zinc-500 w-8 text-right">0.31</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Evidence -->
+    <div>
+      <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-2.5">Key evidence</h3>
+      <blockquote class="border-l-2 border-blue-600 pl-3.5 text-[13px] text-zinc-700 leading-relaxed">
+        "Built and deployed REST APIs with Express and MongoDB for a campus food-delivery
+        app used by 2,000+ students."
+      </blockquote>
+      <p class="text-[11px] text-zinc-400 mt-1.5">Projects · strongest matching line</p>
+    </div>
+
+    <!-- Skills -->
+    <div>
+      <h3 class="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-2.5">Skills vs JD</h3>
+      <div class="space-y-2.5">
+        <div>
+          <div class="text-[11px] text-zinc-400 mb-1">Matched</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">react</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">node.js</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">mongodb</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">rest apis</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200">git</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] text-zinc-400 mb-1">Related</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">express</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200">typescript</span>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] text-zinc-400 mb-1">Missing</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">docker</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-md bg-rose-50 text-rose-800 border border-rose-200">aws</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+</body>
+</html>

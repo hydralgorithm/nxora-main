@@ -36,6 +36,7 @@ Full TDD coverage, database layers, Docker, auth, async job queues, logging fram
 - **The contract is frozen at 0:30** (GAMEPLAN §4). The frontend builds entirely against a mock of it until ~2:30. Your stub at 0:20 must return EXACTLY that shape (use the fixture from GAMEPLAN §4 verbatim — coordinate with the frontend human so `mocks/analyze.json` and your stub are identical).
 - **Zero LLM calls in the scoring path.** This is the hackathon's disqualification constraint. Embeddings via sentence-transformers are OUR logic. The ONLY place an LLM may appear is `/api/chat`, and only as a Q&A layer over already-computed results.
 - **Every number you return must be traceable.** The frontend will display `keyword_score`, `semantic_score`, `matched/partial/missing_skills`, and the `evidence.highlight` quote side-by-side. Judges will cross-check them against resumes. Never emit a score you can't justify from the code.
+- **The frontend also has a static landing page** (marketing only, plus Analysis and Results screens). It needs NOTHING from you — no route, no static serving, no endpoint. Your surface remains exactly `/api/analyze` + `/api/chat`.
 
 ---
 

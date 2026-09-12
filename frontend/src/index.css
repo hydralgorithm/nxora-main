@@ -1,0 +1,54 @@
+@import '@fontsource/geist/400.css';
+@import '@fontsource/geist/500.css';
+@import '@fontsource/geist/600.css';
+@import '@fontsource/geist/700.css';
+@import '@fontsource/geist-mono/400.css';
+@import '@fontsource/geist-mono/500.css';
+@import '@fontsource/geist-mono/600.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, Consolas, monospace;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Browser surfaces, themed from the palette */
+::selection {
+  background: var(--color-blue-600);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-blue-600);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+input,
+textarea {
+  caret-color: var(--color-blue-600);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-zinc-300) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-zinc-300);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

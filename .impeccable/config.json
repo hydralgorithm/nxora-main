@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "design/mock-2-console.html"
+        ],
+        "createdAt": "2026-09-12T06:23:16.154Z",
+        "reason": "decided by design direction (not user confirmed): mock-2 is a deliberate dark-terminal/console aesthetic where small mono uppercase labels are the domain convention; a large display heading would break the style. Throwaway design mock pending user approval."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "design/mock-1-report.html"
+        ],
+        "createdAt": "2026-09-12T06:34:55.102Z",
+        "reason": "decided by me (evidence): detector headless render has no network, Tailwind CDN never loads, all roles report default 16px (verified via 'impeccable detect': body 16px, h1 16px, h2 16px). Actual rendered hierarchy is h1 36 / h2 16 / body 12-14. False positive from offline render, not the design."
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "design/mock-3-workspace.html"
+        ],
+        "createdAt": "2026-09-12T06:34:55.716Z",
+        "reason": "decided by me (evidence): same offline-render false positive as mock-1 — Tailwind CDN cannot load in headless scan, all roles collapse to 16px default. Real hierarchy includes h2 20px candidate name vs 12-14px body. Additionally dense recruiter product UI uses intentionally compressed type scale."
+      }
+    ]
+  }
+}

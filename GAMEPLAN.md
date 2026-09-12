@@ -77,7 +77,9 @@ nexora/
         ├── lib/api.ts         single interface: mock ↔ live switch
         ├── lib/types.ts       TS types mirroring the contract (single source of truth)
         ├── mocks/analyze.json frozen contract fixture
-        ├── pages/Home.tsx     upload + results (keep it one page + drawer)
+        ├── pages/Landing.tsx  one-screen marketing page → CTA into the app (built LAST)
+        ├── pages/Analysis.tsx upload screen (JD + resumes) + processing state
+        ├── pages/Results.tsx  the dashboard: ranked list + candidate detail + JD audit
         └── components/        (see FRONTEND.md)
 ```
 
@@ -181,19 +183,19 @@ Small curated lists: exclusionary idioms ("rockstar", "ninja", "young and energe
 
 | Window | Frontend (Rmais) | Backend (teammate) | Checkpoint |
 |---|---|---|---|
-| 0:00–0:20 | Scaffold Vite+React+TS+Tailwind; invoke `design-taste-frontend` for visual direction | Scaffold FastAPI; stub `/api/analyze` returning fixture JSON | Both servers run |
+| 0:00–0:20 | Scaffold Vite+React+TS+Tailwind in the approved design direction (static mocks in `design/`); invoke `design-taste-frontend` for visual direction | Scaffold FastAPI; stub `/api/analyze` returning fixture JSON | Both servers run |
 | 0:20–0:30 | **CONTRACT FREEZE** — `types.ts` + mock wired into `api.ts` | Write `parser.py` against `synth_data.py` PDFs | Mock fixture identical on both sides |
 | 0:30–1:45 | Upload flow (drag-drop JD + resumes) → ranked list → candidate drawer | `keyword.py` → `semantic.py` → `hybrid.py` + `test_scoring.py` sanity | Backend returns real ranking on synthetic data |
 | 1:45–2:30 | Score bars (overall/keyword/semantic), matched/partial/missing chips, top-3 explanation cards | `explain.py`; end-to-end on real-ish data; messy-PDF edge cases | Frontend switches to LIVE api (`VITE_API_MODE=live`) |
 | 2:30–3:00 | Integration polish, empty/error/loading states, bias panel UI | `bias.py`; speed pass (embeddings batched) | **FULL DEMO WORKS** |
-| 3:00–4:00 | `impeccable` polish pass; chat panel if backend ships `/api/chat` | `/api/chat`; demo dry-run together; rehearse | Buffer. Nothing after 3:30 is allowed to break what exists |
+| 3:00–4:00 | `impeccable` polish pass; **landing page** (one screen — see FRONTEND.md §4); chat panel if backend ships `/api/chat` | `/api/chat`; demo dry-run together; rehearse | Buffer. Nothing after 3:30 is allowed to break what exists |
 
 **The 3:00 rule:** at 3:00, whatever is not merged into the working demo gets cut, not finished. The last 30 minutes are rehearsal + README, never new code.
 
 **If only 3 hours:** cut chat entirely, compress polish to 20 min, keep bias flags (they're ~30 min of backend + a panel you can pre-build against mock).
 
 ### Demo script (rehearse this exact flow, 3 minutes)
-1. Land on Home → one sentence of framing ("transparent shortlisting — we show the receipts").
+1. Land on the **landing page** → one sentence of framing ("transparent shortlisting — we show the receipts") → click **"Run an analysis"**.
 2. Drag in the real JD + 18 resumes → progress → ranked list appears.
 3. Point at #1: both score bars visible → "semantic caught the Express/Node equivalence, keyword caught the explicit stack."
 4. Open the drawer: evidence highlight from the actual resume line.

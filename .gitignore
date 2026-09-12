@@ -148,3 +148,6 @@ temp/
 *.temp
 *.bak
 *.cache
+
+# E2E spot-check scratch (throwaway)
+.pwtest/

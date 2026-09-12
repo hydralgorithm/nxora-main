@@ -1,0 +1,390 @@
+{
+  "jd": {
+    "title": "Junior Full Stack Developer",
+    "company": "TechNova Solutions",
+    "required_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "html/css"],
+    "nice_skills": ["express", "typescript", "docker", "aws"]
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "name": "Ananya Sharma",
+      "file": "resume_07.pdf",
+      "overall_score": 87.4,
+      "keyword_score": 84.2,
+      "semantic_score": 90.6,
+      "matched_skills": ["react", "node.js", "mongodb", "rest apis", "git", "javascript"],
+      "partial_skills": ["express", "typescript"],
+      "missing_skills": ["docker", "aws", "html/css"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.82 },
+          { "name": "Experience", "similarity": 0.79 },
+          { "name": "Skills", "similarity": 0.74 },
+          { "name": "Education", "similarity": 0.31 }
+        ],
+        "highlight": "Built and deployed REST APIs with Express and MongoDB for a campus food-delivery app used by 2,000+ students."
+      },
+      "explanation": "Ananya ranks #1 with an overall fit of 87.4/100. Strong matches: react, node.js, mongodb, rest apis, git, javascript. Related experience detected: express, typescript. Key evidence: \"Built and deployed REST APIs with Express and MongoDB for a campus food-delivery app used by 2,000+ students.\" Gaps: docker, aws, html/css."
+    },
+    {
+      "rank": 2,
+      "name": "Rohan Mehta",
+      "file": "resume_03.pdf",
+      "overall_score": 82.1,
+      "keyword_score": 88.5,
+      "semantic_score": 75.7,
+      "matched_skills": ["javascript", "react", "node.js", "git", "html/css"],
+      "partial_skills": ["mongodb"],
+      "missing_skills": ["docker", "aws", "typescript", "rest apis"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.81 },
+          { "name": "Projects", "similarity": 0.69 },
+          { "name": "Experience", "similarity": 0.64 },
+          { "name": "Education", "similarity": 0.29 }
+        ],
+        "highlight": "Developed responsive React dashboards with reusable component libraries and Git-based team workflows."
+      },
+      "explanation": "Rohan ranks #2 with an overall fit of 82.1/100. He has the strongest keyword profile in the pool: explicit javascript, react, node.js, git, html/css. Related experience detected: mongodb through databases coursework. Key evidence: \"Developed responsive React dashboards with reusable component libraries and Git-based team workflows.\" Gaps: rest apis, docker, aws, typescript. He ranks below the top candidate because his project descriptions are thinner on API development."
+    },
+    {
+      "rank": 3,
+      "name": "Priya Nair",
+      "file": "resume_12.pdf",
+      "overall_score": 78.9,
+      "keyword_score": 71.3,
+      "semantic_score": 86.5,
+      "matched_skills": ["react", "javascript", "rest apis"],
+      "partial_skills": ["node.js"],
+      "missing_skills": ["mongodb", "docker", "aws", "typescript", "git", "html/css"],
+      "evidence": {
+        "sections": [
+          { "name": "Experience", "similarity": 0.84 },
+          { "name": "Projects", "similarity": 0.78 },
+          { "name": "Skills", "similarity": 0.52 },
+          { "name": "Education", "similarity": 0.27 }
+        ],
+        "highlight": "Server-side JavaScript with Handlebars templating, serving JSON endpoints for a React frontend."
+      },
+      "explanation": "Priya ranks #3 with an overall fit of 78.9/100. She is the clearest semantic match in the pool: her resume never says \"Node.js\" but describes \"server-side JavaScript with Handlebars templating\" and React frontends, which the semantic track scores at 86.5. Strong matches: react, javascript, rest apis. Related experience detected: node.js. Gaps: mongodb, git, html/css, docker, aws, typescript."
+    },
+    {
+      "rank": 4,
+      "name": "Arjun Deshpande",
+      "file": "resume_15.pdf",
+      "overall_score": 64.2,
+      "keyword_score": 66.8,
+      "semantic_score": 61.6,
+      "matched_skills": ["javascript", "html/css"],
+      "partial_skills": ["react"],
+      "missing_skills": ["node.js", "mongodb", "rest apis", "git", "docker", "aws", "typescript"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.66 },
+          { "name": "Projects", "similarity": 0.58 },
+          { "name": "Education", "similarity": 0.24 }
+        ],
+        "highlight": "Built interactive web pages in JavaScript and styled them by hand with semantic HTML and CSS."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 5,
+      "name": "Sneha Kulkarni",
+      "file": "resume_09.pdf",
+      "overall_score": 58.7,
+      "keyword_score": 52.4,
+      "semantic_score": 65.0,
+      "matched_skills": ["git"],
+      "partial_skills": ["javascript"],
+      "missing_skills": ["react", "node.js", "mongodb", "rest apis", "html/css", "docker", "aws", "typescript"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.63 },
+          { "name": "Skills", "similarity": 0.44 },
+          { "name": "Education", "similarity": 0.22 }
+        ],
+        "highlight": "Version-controlled group assignments with Git branching and pull-request reviews."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 6,
+      "name": "Vikram Iyer",
+      "file": "resume_02.pdf",
+      "overall_score": 51.3,
+      "keyword_score": 48.9,
+      "semantic_score": 53.7,
+      "matched_skills": ["html/css"],
+      "partial_skills": ["git"],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "docker", "aws", "typescript"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.51 },
+          { "name": "Projects", "similarity": 0.42 },
+          { "name": "Education", "similarity": 0.21 }
+        ],
+        "highlight": "Coded static portfolio sites from scratch in HTML5 and CSS3 with mobile-first layouts."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 7,
+      "name": "Kavya Reddy",
+      "file": "resume_18.pdf",
+      "overall_score": 47.8,
+      "keyword_score": 45.2,
+      "semantic_score": 50.4,
+      "matched_skills": ["javascript"],
+      "partial_skills": ["rest apis"],
+      "missing_skills": ["react", "node.js", "mongodb", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.49 },
+          { "name": "Skills", "similarity": 0.38 },
+          { "name": "Education", "similarity": 0.20 }
+        ],
+        "highlight": "Wrote browser scripts in vanilla JavaScript that fetched data from public JSON APIs."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 8,
+      "name": "Aditya Joshi",
+      "file": "resume_05.pdf",
+      "overall_score": 44.6,
+      "keyword_score": 41.9,
+      "semantic_score": 47.3,
+      "matched_skills": ["git"],
+      "partial_skills": ["mongodb"],
+      "missing_skills": ["javascript", "react", "node.js", "rest apis", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.45 },
+          { "name": "Projects", "similarity": 0.36 },
+          { "name": "Education", "similarity": 0.19 }
+        ],
+        "highlight": "Modeled a college events database in MongoDB during a DBMS elective project."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 9,
+      "name": "Meera Pillai",
+      "file": "resume_11.pdf",
+      "overall_score": 41.2,
+      "keyword_score": 36.7,
+      "semantic_score": 45.7,
+      "matched_skills": ["html/css"],
+      "partial_skills": ["react"],
+      "missing_skills": ["javascript", "node.js", "mongodb", "rest apis", "git", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.44 },
+          { "name": "Skills", "similarity": 0.31 },
+          { "name": "Education", "similarity": 0.18 }
+        ],
+        "highlight": "Customized a Bootstrap template with CSS overrides for a student club website."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 10,
+      "name": "Nikhil Banerjee",
+      "file": "resume_16.pdf",
+      "overall_score": 38.5,
+      "keyword_score": 35.4,
+      "semantic_score": 41.6,
+      "matched_skills": [],
+      "partial_skills": ["javascript", "git"],
+      "missing_skills": ["react", "node.js", "mongodb", "rest apis", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.41 },
+          { "name": "Skills", "similarity": 0.27 },
+          { "name": "Education", "similarity": 0.17 }
+        ],
+        "highlight": "Automated file renaming for a lab dataset with a short Python script."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 11,
+      "name": "Divya Krishnan",
+      "file": "resume_08.pdf",
+      "overall_score": 35.9,
+      "keyword_score": 30.2,
+      "semantic_score": 41.6,
+      "matched_skills": [],
+      "partial_skills": ["rest apis"],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.40 },
+          { "name": "Skills", "similarity": 0.24 },
+          { "name": "Education", "similarity": 0.16 }
+        ],
+        "highlight": "Tested REST endpoints in Postman for a senior design team's mobile backend."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 12,
+      "name": "Sameer Chawla",
+      "file": "resume_01.pdf",
+      "overall_score": 33.4,
+      "keyword_score": 29.8,
+      "semantic_score": 37.0,
+      "matched_skills": [],
+      "partial_skills": ["html/css"],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.34 },
+          { "name": "Projects", "similarity": 0.28 },
+          { "name": "Education", "similarity": 0.16 }
+        ],
+        "highlight": "Edited landing-page HTML for a family business site using a site builder."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 13,
+      "name": "Ishaan Verma",
+      "file": "resume_14.pdf",
+      "overall_score": 30.7,
+      "keyword_score": 27.5,
+      "semantic_score": 33.9,
+      "matched_skills": [],
+      "partial_skills": ["git"],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.32 },
+          { "name": "Skills", "similarity": 0.21 },
+          { "name": "Education", "similarity": 0.15 }
+        ],
+        "highlight": "Contributed typo fixes to an open-source Android documentation repository."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 14,
+      "name": "Tanvi Desai",
+      "file": "resume_06.pdf",
+      "overall_score": 27.9,
+      "keyword_score": 24.6,
+      "semantic_score": 31.2,
+      "matched_skills": [],
+      "partial_skills": ["mongodb"],
+      "missing_skills": ["javascript", "react", "node.js", "rest apis", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.29 },
+          { "name": "Projects", "similarity": 0.24 },
+          { "name": "Education", "similarity": 0.14 }
+        ],
+        "highlight": "Completed SQL queries coursework including basic joins and aggregations."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 15,
+      "name": "Rahul Bhatt",
+      "file": "resume_17.pdf",
+      "overall_score": 25.3,
+      "keyword_score": 22.1,
+      "semantic_score": 28.5,
+      "matched_skills": [],
+      "partial_skills": [],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.27 },
+          { "name": "Skills", "similarity": 0.18 },
+          { "name": "Education", "similarity": 0.14 }
+        ],
+        "highlight": "Built an Arduino-based attendance prototype for an embedded systems lab."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 16,
+      "name": "Nandini Rao",
+      "file": "resume_04.pdf",
+      "overall_score": 22.8,
+      "keyword_score": 19.4,
+      "semantic_score": 26.2,
+      "matched_skills": [],
+      "partial_skills": [],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.25 },
+          { "name": "Skills", "similarity": 0.16 },
+          { "name": "Education", "similarity": 0.13 }
+        ],
+        "highlight": "Designed posters and social graphics for the college fest marketing team."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 17,
+      "name": "Karthik Subramanian",
+      "file": "resume_13.pdf",
+      "overall_score": 19.6,
+      "keyword_score": 16.8,
+      "semantic_score": 22.4,
+      "matched_skills": [],
+      "partial_skills": [],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Projects", "similarity": 0.22 },
+          { "name": "Skills", "similarity": 0.14 },
+          { "name": "Education", "similarity": 0.12 }
+        ],
+        "highlight": "Simulated a packet-routing algorithm in NS3 for a networking course."
+      },
+      "explanation": null
+    },
+    {
+      "rank": 18,
+      "name": "Farhan Qureshi",
+      "file": "resume_10.pdf",
+      "overall_score": 15.2,
+      "keyword_score": 12.9,
+      "semantic_score": 17.5,
+      "matched_skills": [],
+      "partial_skills": [],
+      "missing_skills": ["javascript", "react", "node.js", "mongodb", "rest apis", "git", "html/css", "docker", "aws", "typescript", "express"],
+      "evidence": {
+        "sections": [
+          { "name": "Skills", "similarity": 0.17 },
+          { "name": "Projects", "similarity": 0.11 },
+          { "name": "Education", "similarity": 0.11 }
+        ],
+        "highlight": "Interned in manual QA, logging test cases in spreadsheets for an insurance portal."
+      },
+      "explanation": null
+    }
+  ],
+  "bias_flags": [
+    {
+      "phrase": "rockstar coder who ships fast",
+      "why": "Exclusionary phrasing. It reads as a culture signal rather than a skill requirement and deters qualified applicants who don't self-identify with it.",
+      "suggestion": "\"skilled developer comfortable with rapid iteration\""
+    },
+    {
+      "phrase": "11 skills listed as required",
+      "why": "The must-have list is too narrow for a junior role; Docker, AWS, and TypeScript read as trainable on the job.",
+      "suggestion": "Move 3 skills (docker, aws, typescript) to nice-to-have"
+    }
+  ],
+  "meta": {
+    "resumes_processed": 18,
+    "elapsed_ms": 4210,
+    "engine": "hybrid-v1"
+  }
+}

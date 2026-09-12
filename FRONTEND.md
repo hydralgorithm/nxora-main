@@ -50,14 +50,16 @@ frontend/
 ├── tsconfig.json
 └── src/
     ├── main.tsx
-    ├── App.tsx              # routing (keep to a single page + drawer if possible)
+    ├── App.tsx              # routing: Landing → Analysis → Results (3 screens max; chat is a panel on Results, not a page)
     ├── lib/
     │   ├── types.ts         # TS interfaces mirroring GAMEPLAN §4 — SINGLE source of truth
     │   └── api.ts           # the ONLY file that talks to the network. mock/live switch here
     ├── mocks/
     │   └── analyze.json     # frozen contract fixture (realistic: 18 candidates, spread scores)
     ├── pages/
-    │   └── Home.tsx         # upload zone + results
+    │   ├── Landing.tsx      # one-screen marketing page → CTA "Run an analysis" (built LAST)
+    │   ├── Analysis.tsx     # upload screen (JD + resumes) + processing state
+    │   └── Results.tsx      # the dashboard: ranked list + candidate detail + JD audit
     └── components/
         ├── UploadZone.tsx       # drag-drop: 1 JD (pdf/text) + N resumes
         ├── ProcessingState.tsx  # progress / elapsed / count
@@ -138,7 +140,13 @@ Nothing else in the app imports `fetch`. When backend is ready, integration = `.
 
 ## 4. UI requirements per screen (what judges must SEE)
 
-### Upload (Home, initial state)
+### Landing page (one screen — built LAST, see scope ladder rung 8)
+- Product name, one-line pitch (*"Transparent shortlisting. We show the receipts."*), a 3-step "how it works" (Upload JD + resumes → Hybrid engine scores → Ranked & explained), ONE CTA button: **"Run an analysis"** → Analysis screen.
+- NO pricing, testimonials, feature grids, or footer link farms — reads as overhype to startup judges.
+- This is the one screen where `design-taste-frontend` applies at full strength (it IS a landing-page skill). The dashboard screens borrow its taste principles only.
+- It is a multiplier on first impression, never a substitute for the demo — if the core is broken at 3:00, the landing page gets cut, not the demo.
+
+### Analysis screen (upload — initial state)
 - Two drop zones: **Job Description** (PDF or pasted text toggle) and **Resumes** (multi-PDF).
 - File chips with remove buttons; count badge; a single prominent **"Shortlist candidates"** CTA.
 - Empty state = clear value prop copy: *"Transparent shortlisting. See exactly why each candidate ranks where they do."*
@@ -173,6 +181,7 @@ Nothing else in the app imports `fetch`. When backend is ready, integration = `.
 ## 5. Design direction (taste guidance)
 
 Established with `design-taste-frontend` at scaffold time — but the constraints:
+- **Approved direction first:** three static mocks live in `design/` (`mock-1-report.html` light report / `mock-2-console.html` dark console / `mock-3-workspace.html` recruiter workspace). The human approves ONE direction before scaffolding; build everything in that direction. The landing page derives its aesthetic from the same system — one accent, one radius scale, one type family across all three screens.
 - **Product genre:** recruiter tool. Trust, clarity, precision. Think Linear/Stripe-adjacent calm, not neon dashboard.
 - Dark or light — pick ONE and commit; don't build a theme toggle.
 - Typography-led hierarchy: rank number and name lead; scores are scannable; chips quiet.
@@ -197,9 +206,10 @@ Established with `design-taste-frontend` at scaffold time — but the constraint
 5. Bias panel (mock data is fine until backend ships `bias.py`) ◆ strong-want
 6. Empty/error/loading polish pass ◆ strong-want
 7. `impeccable` visual polish pass ◆ strong-want
-8. ChatPanel (mock) ◆ bonus
-9. ChatPanel (live) ◆ bonus
-10. Anything else you dreamed up ✋ only if 1–9 are done AND it's before 3:30
+8. Landing page (one screen, `design-taste-frontend` at full strength) ◆ strong-want — ONLY after 1–7 work end-to-end
+9. ChatPanel (mock) ◆ bonus
+10. ChatPanel (live) ◆ bonus
+11. Anything else you dreamed up ✋ only if 1–10 are done AND it's before 3:30
 
 ## 8. Hard rules
 

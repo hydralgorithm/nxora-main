@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock 2 - Console</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: { fontFamily: { sans: ['Geist','sans-serif'], mono: ['Geist Mono','monospace'] } } }
+}
+</script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased">
+
+<!-- Top bar -->
+<header class="border-b border-zinc-800">
+  <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="font-mono text-sm font-semibold text-sky-400">shortlist</span>
+      <span class="font-mono text-[11px] text-zinc-600">/</span>
+      <span class="font-mono text-xs text-zinc-400">junior-fullstack-dev</span>
+    </div>
+    <div class="font-mono text-[11px] text-zinc-500">
+      18 resumes · 4.2s · hybrid engine · local
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-8">
+
+  <!-- JD header -->
+  <section class="mb-8 border-l-2 border-sky-400 pl-4">
+    <h1 class="text-lg font-semibold tracking-tight">Junior Full Stack Developer</h1>
+    <p class="font-mono text-xs text-zinc-500 mt-0.5">TechNova Solutions</p>
+    <p class="font-mono text-[11px] text-zinc-500 mt-2 leading-relaxed">
+      required: javascript react node.js mongodb rest-apis git html/css<br>
+      nice: express typescript docker aws
+    </p>
+  </section>
+
+  <!-- Top 3 -->
+  <section class="mb-8">
+    <h2 class="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-3">top_3_explanations</h2>
+
+    <div class="border border-zinc-800 divide-y divide-zinc-800/80">
+
+      <div class="p-4 flex gap-4">
+        <div class="w-28 shrink-0">
+          <div class="font-mono text-sm font-semibold text-sky-400">#1</div>
+          <div class="font-mono text-xs text-zinc-300 mt-0.5">87.4</div>
+          <div class="font-mono text-[10px] text-zinc-600">kw 84.2 / sem 90.6</div>
+        </div>
+        <div>
+          <div class="text-sm font-medium">Ananya Sharma <span class="font-mono text-[11px] text-zinc-600">resume_07.pdf</span></div>
+          <p class="text-[13px] text-zinc-400 leading-relaxed mt-1 max-w-[90ch]">
+            Direct matches: react, node.js, mongodb, rest apis, git. Related: express,
+            typescript. Missing: aws, docker (both nice-to-have). Evidence, projects:
+            <span class="text-zinc-200">"Built and deployed REST APIs with Express and MongoDB
+            for a campus food-delivery app used by 2,000+ students."</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 flex gap-4">
+        <div class="w-28 shrink-0">
+          <div class="font-mono text-sm font-semibold text-sky-400">#2</div>
+          <div class="font-mono text-xs text-zinc-300 mt-0.5">82.1</div>
+          <div class="font-mono text-[10px] text-zinc-600">kw 88.5 / sem 75.7</div>
+        </div>
+        <div>
+          <div class="text-sm font-medium">Rohan Mehta <span class="font-mono text-[11px] text-zinc-600">resume_03.pdf</span></div>
+          <p class="text-[13px] text-zinc-400 leading-relaxed mt-1 max-w-[90ch]">
+            Strongest keyword profile in the pool: explicit javascript, react, node.js, git,
+            html/css. Related: mongodb via databases coursework. Missing: docker, aws,
+            typescript. Ranked second: thinner API development in project descriptions.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-4 flex gap-4">
+        <div class="w-28 shrink-0">
+          <div class="font-mono text-sm font-semibold text-sky-400">#3</div>
+          <div class="font-mono text-xs text-zinc-300 mt-0.5">78.9</div>
+          <div class="font-mono text-[10px] text-zinc-600">kw 71.3 / sem 86.5</div>
+        </div>
+        <div>
+          <div class="text-sm font-medium">Priya Nair <span class="font-mono text-[11px] text-zinc-600">resume_12.pdf</span></div>
+          <p class="text-[13px] text-zinc-400 leading-relaxed mt-1 max-w-[90ch]">
+            Clearest semantic match in the pool. Never says "node.js"; describes
+            "server-side JavaScript with Handlebars templating" and React frontends, scored
+            86.5 by the semantic track. Direct: react, javascript, rest apis. Missing:
+            mongodb, docker, aws.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Ranking table -->
+  <section class="mb-8">
+    <h2 class="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-3">ranking · all 18</h2>
+
+    <div class="border border-zinc-800">
+      <!-- column header -->
+      <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-2.5 border-b border-zinc-800 font-mono text-[10px] uppercase tracking-wider text-zinc-600">
+        <span>rank</span><span>candidate</span><span class="text-right">kw</span><span class="text-right">sem</span><span class="text-right">overall</span><span>skills vs JD</span>
+      </div>
+
+      <!-- rows -->
+      <div class="divide-y divide-zinc-800/60 font-mono text-[12px]">
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">01</span>
+          <div><span class="text-zinc-100">Ananya Sharma</span> <span class="text-zinc-600 text-[10px] block">resume_07.pdf</span></div>
+          <span class="text-right text-zinc-300">84.2</span>
+          <span class="text-right text-zinc-300">90.6</span>
+          <span class="text-right text-sky-400 font-semibold">87.4</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+react +node.js +mongodb +rest-apis +git</span>
+            <span class="text-zinc-500">~express ~typescript</span>
+            <span class="text-rose-400">-docker -aws</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">02</span>
+          <div><span class="text-zinc-100">Rohan Mehta</span> <span class="text-zinc-600 text-[10px] block">resume_03.pdf</span></div>
+          <span class="text-right text-zinc-300">88.5</span>
+          <span class="text-right text-zinc-300">75.7</span>
+          <span class="text-right text-sky-400 font-semibold">82.1</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+javascript +react +node.js +git +html/css</span>
+            <span class="text-zinc-500">~mongodb</span>
+            <span class="text-rose-400">-docker -aws</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">03</span>
+          <div><span class="text-zinc-100">Priya Nair</span> <span class="text-zinc-600 text-[10px] block">resume_12.pdf</span></div>
+          <span class="text-right text-zinc-300">71.3</span>
+          <span class="text-right text-zinc-300">86.5</span>
+          <span class="text-right text-sky-400 font-semibold">78.9</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+react +javascript +rest-apis</span>
+            <span class="text-zinc-500">~node.js</span>
+            <span class="text-rose-400">-mongodb -docker -aws</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">04</span>
+          <div><span class="text-zinc-100">Arjun Deshpande</span> <span class="text-zinc-600 text-[10px] block">resume_15.pdf</span></div>
+          <span class="text-right text-zinc-300">66.8</span>
+          <span class="text-right text-zinc-300">61.6</span>
+          <span class="text-right text-zinc-200 font-semibold">64.2</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+javascript +html/css</span>
+            <span class="text-zinc-500">~react</span>
+            <span class="text-rose-400">-node.js -mongodb -rest-apis</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">05</span>
+          <div><span class="text-zinc-100">Sneha Kulkarni</span> <span class="text-zinc-600 text-[10px] block">resume_09.pdf</span></div>
+          <span class="text-right text-zinc-300">52.4</span>
+          <span class="text-right text-zinc-300">65.0</span>
+          <span class="text-right text-zinc-200 font-semibold">58.7</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+git</span>
+            <span class="text-zinc-500">~javascript</span>
+            <span class="text-rose-400">-react -node.js -mongodb -rest-apis</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-[3rem_16rem_5rem_5rem_5rem_1fr] gap-4 px-4 py-3 items-center hover:bg-zinc-900 transition-colors cursor-pointer">
+          <span class="text-zinc-500">06</span>
+          <div><span class="text-zinc-100">Vikram Iyer</span> <span class="text-zinc-600 text-[10px] block">resume_02.pdf</span></div>
+          <span class="text-right text-zinc-300">48.9</span>
+          <span class="text-right text-zinc-300">53.7</span>
+          <span class="text-right text-zinc-200 font-semibold">51.3</span>
+          <span class="text-[11px] leading-relaxed">
+            <span class="text-emerald-400">+html/css</span>
+            <span class="text-zinc-500">~git</span>
+            <span class="text-rose-400">-javascript -react -node.js</span>
+          </span>
+        </div>
+
+        <div class="px-4 py-2.5 font-mono text-[11px] text-zinc-600 text-center">
+          12 rows omitted · ranks 07-18
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Bias flags -->
+  <section>
+    <h2 class="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-3">jd_audit</h2>
+    <div class="border border-zinc-800 divide-y divide-zinc-800/80 font-mono text-[12px]">
+      <div class="px-4 py-3 flex items-baseline gap-4">
+        <span class="text-amber-400 shrink-0">[phrasing]</span>
+        <span class="text-zinc-300">"rockstar coder who ships fast"</span>
+        <span class="text-zinc-600 text-[11px]">exclusionary; reads as culture signal</span>
+        <span class="ml-auto text-zinc-500 text-[11px] hidden md:block">"skilled developer comfortable with rapid iteration"</span>
+      </div>
+      <div class="px-4 py-3 flex items-baseline gap-4">
+        <span class="text-amber-400 shrink-0">[scope]</span>
+        <span class="text-zinc-300">11 required skills</span>
+        <span class="text-zinc-600 text-[11px]">must-have list too narrow for a junior role</span>
+        <span class="ml-auto text-zinc-500 text-[11px] hidden md:block">move docker, aws, typescript to nice-to-have</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-zinc-800 mt-8">
+  <div class="max-w-6xl mx-auto px-6 h-12 flex items-center justify-between font-mono text-[11px] text-zinc-600">
+    <span>Shortlist · InternLoom AI Hackathon</span>
+    <span>scoring runs locally · no LLM in the ranking path</span>
+  </div>
+</footer>
+
+</body>
+</html>
