@@ -1,0 +1,20 @@
+Aditya Rao
+Hyderabad | aditya.rao@email.com
+
+Summary
+Mobile-first developer with React Native experience; web stack overlap is partial.
+
+Skills
+React Native, JavaScript, TypeScript, some React, Firebase, Node.js (basics), Git
+
+Experience
+Mobile Developer Intern — AppWorks (2025)
+- Built React Native screens consuming REST APIs.
+- Used Firebase for auth and data; touched the team's Node.js backend occasionally.
+
+Projects
+- Fitness tracker app (React Native, Firebase).
+- Web portfolio attempt: React with a Node tutorial backend.
+
+Education
+B.Tech ECE, Hyderabad (2022 - 2026)

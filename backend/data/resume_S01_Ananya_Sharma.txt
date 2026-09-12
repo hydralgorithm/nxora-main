@@ -1,0 +1,28 @@
+Ananya Sharma
+Bengaluru | ananya.sharma@email.com | +91 98XXXXXX01 | github.com/ananyacodes
+
+Summary
+Junior full stack developer with hands-on experience building web applications with
+JavaScript, React, and Node.js. Comfortable across the stack and shipping features end to end.
+
+Technical Skills
+Languages: JavaScript (ES6+), TypeScript, Python
+Frontend: React, Redux, HTML5, CSS3, Tailwind CSS
+Backend: Node.js, Express, REST APIs, JWT authentication
+Databases: MongoDB, MySQL
+Tools: Git, GitHub, Docker, Jest, Postman
+
+Experience
+Software Engineering Intern — BrightApps (Jun 2025 - Aug 2025)
+- Built REST APIs with Express and MongoDB for a food-delivery app serving 2,000 monthly users.
+- Developed React components for the customer dashboard, improving load time by 30%.
+- Wrote Jest unit tests reaching 80% coverage on new modules.
+- Collaborated with 4 engineers using Git flow and agile sprints.
+
+Projects
+DevBoard — a Kanban tool (React, Node.js, Express, MongoDB)
+- Full stack project with realtime updates, JWT auth, and a Docker-based deployment.
+- Designed MongoDB schemas and REST API endpoints for boards, cards, and users.
+
+Education
+B.E. Computer Science, Manipal Institute of Technology (2023 - 2027)

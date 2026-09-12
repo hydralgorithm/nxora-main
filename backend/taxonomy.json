@@ -1,0 +1,298 @@
+{
+  "javascript": [
+    "js",
+    "ecmascript",
+    "es6"
+  ],
+  "typescript": [
+    "ts"
+  ],
+  "react": [
+    "react.js",
+    "reactjs",
+    "react js"
+  ],
+  "next.js": [
+    "nextjs",
+    "next js"
+  ],
+  "vue": [
+    "vue.js",
+    "vuejs"
+  ],
+  "angular": [
+    "angularjs"
+  ],
+  "redux": [
+    "redux toolkit",
+    "state management"
+  ],
+  "node.js": [
+    "node",
+    "nodejs",
+    "node js",
+    "express",
+    "express.js",
+    "expressjs",
+    "server-side javascript",
+    "serverside javascript",
+    "backend javascript"
+  ],
+  "mongodb": [
+    "mongo",
+    "mongo db",
+    "mongodb atlas",
+    "document database",
+    "nosql document"
+  ],
+  "html": [
+    "html5",
+    "semantic html"
+  ],
+  "css": [
+    "css3",
+    "flexbox",
+    "grid layout",
+    "responsive css"
+  ],
+  "tailwind css": [
+    "tailwind",
+    "tailwindcss"
+  ],
+  "bootstrap": [
+    "bootstrap 5"
+  ],
+  "sass": [
+    "scss"
+  ],
+  "python": [
+    "python3",
+    "py3"
+  ],
+  "django": [
+    "django rest framework",
+    "drf"
+  ],
+  "flask": [
+    "flask-restful"
+  ],
+  "fastapi": [
+    "fast api"
+  ],
+  "java": [
+    "core java",
+    "java se"
+  ],
+  "spring boot": [
+    "spring",
+    "springboot"
+  ],
+  "c++": [
+    "cpp",
+    "c plus plus"
+  ],
+  "c#": [
+    "csharp",
+    "c sharp",
+    ".net"
+  ],
+  "sql": [
+    "structured query language",
+    "sql queries",
+    "relational database",
+    "relational databases"
+  ],
+  "mysql": [
+    "my sql",
+    "mysql database"
+  ],
+  "postgresql": [
+    "postgres",
+    "psql",
+    "postgre"
+  ],
+  "sqlite": [
+    "sqlite3"
+  ],
+  "redis": [
+    "redis cache",
+    "caching with redis"
+  ],
+  "nosql": [
+    "no sql",
+    "non-relational database",
+    "non-relational databases"
+  ],
+  "rest api": [
+    "rest",
+    "restful",
+    "rest apis",
+    "restful api",
+    "restful apis",
+    "restful services",
+    "api development",
+    "web services",
+    "http api"
+  ],
+  "graphql": [
+    "apollo",
+    "apollo client"
+  ],
+  "git": [
+    "github",
+    "gitlab",
+    "version control",
+    "git flow"
+  ],
+  "docker": [
+    "dockerfile",
+    "containerization",
+    "containers",
+    "docker compose"
+  ],
+  "kubernetes": [
+    "k8s"
+  ],
+  "aws": [
+    "amazon web services",
+    "ec2",
+    "s3",
+    "lambda",
+    "aws lambda"
+  ],
+  "azure": [
+    "microsoft azure"
+  ],
+  "gcp": [
+    "google cloud",
+    "google cloud platform"
+  ],
+  "ci/cd": [
+    "ci cd",
+    "continuous integration",
+    "continuous deployment",
+    "github actions",
+    "jenkins"
+  ],
+  "jest": [
+    "jest tests",
+    "mocha",
+    "vitest"
+  ],
+  "testing": [
+    "unit testing",
+    "unit tests",
+    "unit test",
+    "test-driven development",
+    "tdd",
+    "integration testing",
+    "end-to-end testing",
+    "e2e testing",
+    "qa testing",
+    "test frameworks",
+    "test framework"
+  ],
+  "agile": [
+    "scrum",
+    "agile methodology",
+    "agile development",
+    "sprint planning",
+    "kanban"
+  ],
+  "data structures": [
+    "dsa",
+    "data structures and algorithms",
+    "algorithms and data structures"
+  ],
+  "algorithms": [
+    "algorithm design",
+    "problem solving with algorithms"
+  ],
+  "machine learning": [
+    "ml",
+    "scikit",
+    "scikit-learn",
+    "sklearn",
+    "tensorflow",
+    "pytorch",
+    "pandas",
+    "numpy"
+  ],
+  "figma": [
+    "ui design",
+    "ui/ux design",
+    "wireframing",
+    "prototyping"
+  ],
+  "full stack": [
+    "fullstack",
+    "full-stack development",
+    "full stack development"
+  ],
+  "web development": [
+    "web dev",
+    "web apps",
+    "web applications"
+  ],
+  "responsive design": [
+    "mobile-first",
+    "mobile first",
+    "responsive layout",
+    "responsive web design"
+  ],
+  "linux": [
+    "unix",
+    "bash",
+    "shell scripting",
+    "command line"
+  ],
+  "firebase": [
+    "firestore",
+    "firebase auth"
+  ],
+  "communication": [
+    "communication skills",
+    "communications",
+    "communicating",
+    "written communication",
+    "verbal communication"
+  ],
+  "teamwork": [
+    "collaboration",
+    "collaborative",
+    "team player",
+    "working in teams",
+    "cross-functional",
+    "cross functional"
+  ],
+  "problem solving": [
+    "problem-solving",
+    "analytical skills",
+    "analytical thinking",
+    "troubleshooting"
+  ],
+  "debugging": [
+    "debug",
+    "debugs",
+    "debugging skills",
+    "bug fixing"
+  ],
+  "object-oriented programming": [
+    "oop",
+    "object oriented",
+    "object-oriented design"
+  ],
+  "database": [
+    "databases",
+    "database design",
+    "database management",
+    "dbms"
+  ],
+  "mobile development": [
+    "android",
+    "ios",
+    "flutter",
+    "react native",
+    "mobile apps"
+  ]
+}

@@ -1,0 +1,16 @@
+Tara Menon
+Bangalore | tara.menon@email.com
+
+Summary
+CS student with web development coursework and personal projects. Still building depth.
+
+Skills: HTML, CSS, JavaScript, React (basics), Python, MySQL, Git
+
+Projects
+- College fest website: responsive HTML/CSS/JS site, small React registration widget.
+- Todo app following an online React tutorial; stored tasks with a Node.js tutorial API.
+- Coursework: DBMS (SQL), web technologies, data structures.
+
+Education
+BCA, Bangalore (2023 - 2026)
+Coursework only — no industry internship yet, but I learn fast and love collaborating.

@@ -1,0 +1,25 @@
+ROHAN VERMA
+Pune | rohan.verma@email.com | +91 98XXXXXX02
+
+OBJECTIVE
+Computer science student seeking full stack web development internship.
+
+SKILLS
+JavaScript, React.js, NodeJS, Express.js, MongoDB, HTML, CSS, REST APIs, Git, AWS, Docker
+
+EXPERIENCE
+Web Developer Intern — StartupHub (Jan 2025 - Apr 2025)
+- Created server-side JavaScript services for an e-commerce checkout flow.
+- Built reusable React components and integrated them with RESTful APIs.
+- Managed MongoDB collections and wrote aggregation queries for analytics.
+
+PROJECTS
+Expense Tracker (MERN stack)
+- React frontend with a Node and Express backend, data persisted in MongoDB.
+- Deployed on AWS EC2 with Docker containers.
+
+StudyBuddy — study group finder
+- RESTful web services, JWT login, responsive CSS design.
+
+EDUCATION
+B.Tech Information Technology, VIT Pune (2022 - 2026)

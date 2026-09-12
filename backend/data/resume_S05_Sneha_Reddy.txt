@@ -1,0 +1,19 @@
+Sneha Reddy
+Hyderabad | sneha.reddy@email.com
+
+Web developer focused on the MERN stack. Experience building REST APIs, React SPAs, and
+MongoDB-backed services. Team player, comfortable with Git workflows and agile sprints.
+
+Technical Skills: JavaScript, React, Node.js, Express, MongoDB, HTML5, CSS3, Git, GitHub Actions
+
+Project Experience
+- EventLite (hackathon winner, 2025): event booking app. I owned the backend:
+  Express REST services with MongoDB, plus the React booking UI. Containerized with Docker.
+- Recipio: recipe manager SPA in React with a Node.js API. Wrote unit tests for the API layer.
+
+Work Experience
+Web Development Intern — local agency (May 2025 - Jul 2025)
+- Built responsive client sites (HTML/CSS/JS) and a small Node.js invoicing API.
+- Communicated directly with clients and presented demos each sprint.
+
+Education: B.Tech CSE, Hyderabad (2023 - 2027)

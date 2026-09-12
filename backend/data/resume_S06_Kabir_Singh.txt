@@ -1,0 +1,19 @@
+Kabir Singh
+Delhi | kabir.singh@email.com | github.com/kabirbuilds
+
+Summary: aspiring full stack engineer; strong on backend services and APIs, solid React.
+
+Skills: Node.js, Express, MongoDB, React, JavaScript, HTML, CSS, Git, Docker, REST API design
+
+Experience
+Backend Intern — FinTech startup (remote) (Oct 2024 - Jan 2025)
+- Built and maintained RESTful API endpoints in Node.js for a payments dashboard.
+- Modeled data in MongoDB; optimized slow queries with indexes.
+- Paired with the frontend team to integrate React pages with my APIs.
+
+Projects
+- URL shortener service: Node.js + Express + MongoDB, deployed with Docker on AWS.
+- Notes app: React frontend, Express backend, full CRUD REST API, versioned with Git.
+
+Education
+B.Tech Computer Engineering, Delhi (2022 - 2026)

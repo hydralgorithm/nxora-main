@@ -1,0 +1,92 @@
+[
+  {
+    "file": "resume_S01_Ananya_Sharma.txt",
+    "name": "Ananya Sharma",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_S02_Rohan_Verma.txt",
+    "name": "Rohan Verma",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_S03_Priya_Nair.txt",
+    "name": "Priya Nair",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_S04_Arjun_Patel.txt",
+    "name": "Arjun Patel",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_S05_Sneha_Reddy.txt",
+    "name": "Sneha Reddy",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_S06_Kabir_Singh.txt",
+    "name": "Kabir Singh",
+    "tier": "strong"
+  },
+  {
+    "file": "resume_P07_Meera_Iyer.txt",
+    "name": "Meera Iyer",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_P08_Vikram_Desai.txt",
+    "name": "Vikram Desai",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_P09_Tara_Menon.txt",
+    "name": "Tara Menon",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_P10_Dev_Malhotra.txt",
+    "name": "Dev Malhotra",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_P11_Nisha_Gupta.txt",
+    "name": "Nisha Gupta",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_P12_Aditya_Rao.txt",
+    "name": "Aditya Rao",
+    "tier": "partial"
+  },
+  {
+    "file": "resume_W13_Farhan_Khan.txt",
+    "name": "Farhan Khan",
+    "tier": "weak"
+  },
+  {
+    "file": "resume_W14_Simran_Kaur.txt",
+    "name": "Simran Kaur",
+    "tier": "weak"
+  },
+  {
+    "file": "resume_W15_Rahul_Mishra.txt",
+    "name": "Rahul Mishra",
+    "tier": "weak"
+  },
+  {
+    "file": "resume_W16_Zoya_Ali.txt",
+    "name": "Zoya Ali",
+    "tier": "weak"
+  },
+  {
+    "file": "resume_W17_Nikhil_Joshi.txt",
+    "name": "Nikhil Joshi",
+    "tier": "weak"
+  },
+  {
+    "file": "resume_W18_Pooja_Bhatt.txt",
+    "name": "Pooja Bhatt",
+    "tier": "weak"
+  }
+]

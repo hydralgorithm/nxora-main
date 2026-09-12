@@ -1,0 +1,21 @@
+Farhan Khan
+Kolkata | farhan.khan@email.com
+
+Summary
+Data analyst with strong statistics and visualization skills, looking for analytics roles.
+
+Skills
+Python, Pandas, NumPy, scikit-learn, SQL, Tableau, Power BI, Excel, machine learning basics
+
+Experience
+Data Analyst Intern — RetailCo (2024 - 2025)
+- Built dashboards in Tableau and Power BI for sales teams.
+- Wrote SQL queries and Python scripts for data cleaning.
+- Trained a scikit-learn model to forecast weekly demand.
+
+Projects
+- Churn prediction with scikit-learn (Kaggle top 15%).
+- Excel automation toolkit for reporting.
+
+Education
+B.Com + Data Analytics certification, Kolkata (2022 - 2025)

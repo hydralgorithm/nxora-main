@@ -1,0 +1,21 @@
+Meera Iyer
+Kochi | meera.iyer@email.com
+
+Summary
+Frontend developer with strong React and CSS skills. Some exposure to backend work.
+
+Skills
+React, JavaScript, HTML, CSS, Sass, Tailwind, Git, Figma, a bit of Node.js
+
+Experience
+Frontend Developer Intern — PixelWorks (Jun 2025 - Sep 2025)
+- Built responsive React dashboards from Figma designs.
+- Wrote clean HTML/CSS and reusable components; used Git in a team of 5.
+- Occasionally fixed small bugs in the company's Node.js services.
+
+Projects
+- Design-system playground: React component library with styled CSS.
+- Weather app: React frontend consuming a third-party REST API.
+
+Education
+B.Des + minor in CS, Kochi (2023 - 2027)
