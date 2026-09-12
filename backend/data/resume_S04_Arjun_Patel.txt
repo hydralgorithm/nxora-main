@@ -1,0 +1,19 @@
+Arjun Patel
+Mumbai | +91 98XXXXXX04 | arjun.patel@email.com | linkedin.com/in/arjunpatel
+
+EXPERIENCE
+Full Stack Developer (Trainee) — CodeCraft Labs (Aug 2024 - Feb 2025)
+- Worked on a SaaS dashboard: React frontend, Express.js REST API layer, MongoDB storage.
+- Implemented CRUD modules and pagination APIs; wrote integration tests.
+- Used Git for version control, participated in agile ceremonies and code reviews.
+
+PROJECTS
+- ShopFast: e-commerce demo. React + Redux on the front, Node.js REST services on the
+  back, MongoDB for products and orders. Dockerized for local development.
+- DevForum: developer Q&A site with RESTful APIs, JWT authentication, HTML/CSS templates.
+
+TECHNICAL SKILLS
+JavaScript, TypeScript, React, Node.js, Express, MongoDB, HTML, CSS, Git, Docker, AWS basics, Jest
+
+EDUCATION
+B.E. Information Science, Mumbai (2022 - 2026)

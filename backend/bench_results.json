@@ -1,0 +1,68 @@
+[
+  {
+    "model": "all-MiniLM-L6-v2 (baseline)",
+    "spearman": 0.9312,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 0.0668,
+    "margin_partial_weak": 0.1962,
+    "margin_strong_weak": 0.263,
+    "spread": 0.2898,
+    "seconds": 3.5,
+    "load_seconds": 8.1
+  },
+  {
+    "model": "bge-small-en-v1.5",
+    "spearman": 0.8656,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 0.0202,
+    "margin_partial_weak": 0.0937,
+    "margin_strong_weak": 0.1139,
+    "spread": 0.1441,
+    "seconds": 6.82,
+    "load_seconds": 38.6
+  },
+  {
+    "model": "granite-embedding-small-r2",
+    "spearman": 0.9312,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 0.0143,
+    "margin_partial_weak": 0.058,
+    "margin_strong_weak": 0.0723,
+    "spread": 0.0928,
+    "seconds": 6.68,
+    "load_seconds": 38.7
+  },
+  {
+    "model": "e5-base-v2",
+    "spearman": 0.918,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 0.009,
+    "margin_partial_weak": 0.0436,
+    "margin_strong_weak": 0.0526,
+    "spread": 0.069,
+    "seconds": 23.43,
+    "load_seconds": 97.9
+  },
+  {
+    "model": "gte-modernbert-base",
+    "spearman": 0.8525,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 0.0189,
+    "margin_partial_weak": 0.0966,
+    "margin_strong_weak": 0.1155,
+    "spread": 0.1664,
+    "seconds": 238.13,
+    "load_seconds": 107.9
+  },
+  {
+    "model": "RERANKER cross-encoder/ettin-reranker-32m-v1",
+    "spearman": 0.9443,
+    "auroc_strong_vs_weak": 1.0,
+    "margin_strong_partial": 1.224,
+    "margin_partial_weak": 2.4186,
+    "margin_strong_weak": 3.6426,
+    "spread": 5.3953,
+    "seconds": 37.18,
+    "load_seconds": 75.8
+  }
+]

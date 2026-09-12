@@ -1,0 +1,21 @@
+Dev Malhotra
+Jaipur | dev.malhotra@email.com
+
+Summary
+Python/Django web developer exploring the JavaScript ecosystem.
+
+Skills
+Python, Django, Flask, JavaScript, HTML, CSS, SQL, PostgreSQL, Git, Docker
+
+Experience
+Web Developer — small agency (2024 - 2025)
+- Built client sites and admin panels with Django and PostgreSQL.
+- Wrote JavaScript for interactivity and some React experiments on personal time.
+- Used Git, Docker for deployments.
+
+Projects
+- Django e-commerce backend with a REST API (Django REST Framework).
+- Learning project: rebuilding my portfolio in React.
+
+Education
+B.Tech IT, Jaipur (2021 - 2025)

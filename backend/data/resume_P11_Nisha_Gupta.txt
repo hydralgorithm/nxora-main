@@ -1,0 +1,17 @@
+Nisha Gupta
+Lucknow | nisha.gupta@email.com
+
+OBJECTIVE: internship in software development.
+
+SKILLS: Java, C++, SQL, HTML, CSS, JavaScript (basic), MySQL, Git
+
+EXPERIENCE:
+- College tech fest coordinator (teamwork, communication).
+- 2-month lab assistantship: maintained department website (HTML/CSS updates).
+
+PROJECTS:
+- Library management system in Java with MySQL database.
+- Personal page: basic HTML and CSS site hosted on GitHub Pages.
+- Started learning React via online course (50% complete).
+
+EDUCATION: B.Sc. CS, Lucknow (2023 - 2026)

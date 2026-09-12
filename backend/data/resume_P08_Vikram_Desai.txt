@@ -1,0 +1,20 @@
+Vikram Desai
+Ahmedabad | vikram.desai@email.com
+
+Backend-focused developer. Comfortable with databases and API development; frontend experience is limited.
+
+Technical Skills
+Node.js, Express, MongoDB, SQL, MySQL, REST APIs, Git, Linux, Docker
+
+Experience
+Backend Intern — DataServe (2024)
+- Developed REST API endpoints for an inventory system using Node and Express.
+- Wrote MongoDB queries and designed collections.
+- Basic HTML admin pages (no modern frontend framework experience).
+
+Projects
+- Blog API: Express + MongoDB with authentication; documented REST endpoints.
+- SQL migration toolkit: scripts converting MySQL dumps to MongoDB documents.
+
+Education
+B.E. Computer Engineering, Gujarat (2022 - 2026)

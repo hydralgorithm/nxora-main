@@ -1,0 +1,23 @@
+Priya Nair
+Chennai | priya.nair@email.com
+
+Summary
+Full stack web developer. I build web apps end to end: React interfaces, Node backends,
+and Mongo databases. I like shipping.
+
+Skills
+React, Node, Express, MongoDB, JavaScript, HTML/CSS, Git, testing with Jest, TypeScript
+
+Projects
+- ChatApp: realtime chat built with Express and WebSockets, front end in React,
+  messages stored in MongoDB. 50+ users at my college.
+- Portfolio site: responsive HTML and CSS, deployed on Netlify.
+- API sandbox: a collection of REST API exercises with Node.js, unit tested with Jest.
+
+Experience
+Freelance web developer (2024 - present)
+- Delivered 3 client websites: React frontends talking to Node.js REST services.
+- Handled deployments and version control with Git and GitHub.
+
+Education
+B.Sc. Computer Science, Chennai (2023 - 2026)
