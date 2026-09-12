@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shortlist — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /*
+   * Dashboard mock — matches the live Vite + React frontend's design language.
+   * Same tokens: bg-zinc-100 page, white surface cards, blue-600 accent,
+   * Geist + Geist Mono, 10px radius, emerald/amber/rose skill chips.
+   */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #f4f4f5;       /* zinc-100 */
+    --surface:   #ffffff;
+    --border:    #e4e4e7;       /* zinc-200 */
+    --border-lt: #f4f4f5;       /* zinc-100 */
+    --text:      #18181b;       /* zinc-900 */
+    --text-2:    #3f3f46;       /* zinc-700 */
+    --text-3:    #71717a;       /* zinc-500 */
+    --text-4:    #a1a1aa;       /* zinc-400 */
+    --accent:    #2563eb;       /* blue-600 */
+    --accent-hover: #1d4ed8;    /* blue-700 */
+    --accent-bg: rgba(37,99,235,.06);
+
+    --emerald:     #059669;
+    --emerald-bg:  #ecfdf5;     /* emerald-50 */
+    --emerald-bdr: #a7f3d0;     /* emerald-200 */
+    --emerald-txt: #065f46;     /* emerald-800 */
+
+    --amber-bg:  #fffbeb;       /* amber-50 */
+    --amber-bdr: #fde68a;       /* amber-200 */
+    --amber-txt: #92400e;       /* amber-800 */
+
+    --rose-bg:   #fff1f2;       /* rose-50 */
+    --rose-bdr:  #fecdd3;       /* rose-200 */
+    --rose-txt:  #9f1239;       /* rose-800 */
+
+    --radius:    10px;
+    --radius-sm: 6px;
+    --font:      'Geist', system-ui, -apple-system, sans-serif;
+    --mono:      'Geist Mono', 'SF Mono', 'Fira Code', monospace;
+
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html { font-size: 15px; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* ── Header ─────────────────────────────────────────────── */
+  .topbar {
+    height: 56px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 0 20px;
+    background: var(--surface);
+    flex-shrink: 0;
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .app-name {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -.02em;
+    flex-shrink: 0;
+  }
+  .breadcrumb-sep { color: var(--text-4); font-size: 13px; }
+  .breadcrumb-item {
+    font-size: 14px;
+    color: var(--text-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .topbar-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: border-color .15s, color .15s;
+  }
+  .btn-secondary:hover { border-color: #d4d4d8; color: var(--text); }
+  .btn-primary {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+  }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-primary:active { transform: translateY(1px); }
+
+  /* ── Toolbar Row ────────────────────────────────────────── */
+  .toolbar {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chip-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-2);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .chip-toggle:hover { border-color: #d4d4d8; }
+  .chip-toggle.active {
+    background: var(--text);
+    border-color: var(--text);
+    color: #fff;
+  }
+  .chip-toggle.warn {
+    background: var(--amber-bg);
+    border-color: var(--amber-bdr);
+    color: var(--amber-txt);
+  }
+  .chip-toggle.warn:hover { border-color: #fcd34d; }
+  .toolbar-legend {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-3);
+  }
+
+  /* ── Disclosure Panel (JD / Bias) ─────────────────────── */
+  .disclosure {
+    border-bottom: 1px solid var(--border);
+    background: rgba(250,250,250,.6);
+    padding: 16px 20px;
+  }
+  .disclosure-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-3);
+  }
+  .disclosure-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 640px;
+  }
+  .disc-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+  .skill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .sc {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid;
+  }
+  .sc.matched { background: var(--emerald-bg); color: var(--emerald-txt); border-color: var(--emerald-bdr); }
+  .sc.partial { background: var(--amber-bg); color: var(--amber-txt); border-color: var(--amber-bdr); }
+  .sc.missing { background: var(--rose-bg); color: var(--rose-txt); border-color: var(--rose-bdr); }
+
+  /* Bias flags */
+  .bias-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .bias-kind {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .bias-kind.wording { background: #e4e4e7; color: var(--text-2); }
+  .bias-kind.scope { background: var(--amber-bg); color: var(--amber-txt); }
+  .bias-phrase {
+    margin-top: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text);
+  }
+  .bias-why {
+    margin-top: 4px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--text-3);
+  }
+  .bias-fix {
+    margin-top: 6px;
+    border-left: 2px solid #34d399;
+    padding-left: 8px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .bias-fix b { color: var(--emerald); font-weight: 500; }
+
+  /* ── Main Layout ────────────────────────────────────────── */
+  .layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 480px;
+    gap: 16px;
+    padding: 16px;
+    max-width: 1720px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: start;
+  }
+
+  /* ── Candidate List Panel ──────────────────────────────── */
+  .list-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .list-header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .list-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .band-filters {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .band-btn {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: var(--text-3);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .band-btn:hover { color: var(--text); background: var(--bg); }
+  .band-btn.active { background: var(--text); color: #fff; }
+
+  /* Band section headers */
+  .band-header {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: rgba(250,250,250,.95);
+    backdrop-filter: blur(2px);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .band-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .band-dot.strong { background: #10b981; }
+  .band-dot.medium { background: #f59e0b; }
+  .band-dot.weak   { background: #d4d4d8; }
+  .band-name {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+  }
+  .band-name.strong { color: #047857; }
+  .band-name.medium { color: #b45309; }
+  .band-name.weak   { color: var(--text-3); }
+  .band-count {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-3);
+  }
+
+  /* Candidate rows */
+  .list-body {
+    max-height: calc(100dvh - 190px);
+    overflow-y: auto;
+  }
+  .c-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px 10px 12px;
+    border: none;
+    border-bottom: 1px solid var(--border-lt);
+    border-left: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: background .12s, border-color .12s;
+  }
+  .c-row:hover { background: #fafafa; }
+  .c-row.active {
+    background: rgba(37,99,235,.04);
+    border-left-color: var(--accent);
+  }
+  .c-rank {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-4);
+    width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .c-band-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .c-name-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .c-name {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .c-row.active .c-name { font-weight: 600; }
+  .c-file {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-3);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .c-met {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--text-3);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .c-bar-wrap {
+    width: 56px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--border-lt);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .c-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width .5s var(--ease-out-expo);
+  }
+  .c-bar.strong { background: #10b981; }
+  .c-bar.medium { background: #f59e0b; }
+  .c-bar.weak   { background: #d4d4d8; }
+  .c-score {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    width: 40px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .list-footer {
+    padding: 8px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-3);
+  }
+  .list-footer kbd {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 4px;
+  }
+
+  /* ── Detail Panel ──────────────────────────────────────── */
+  .detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    position: sticky;
+    top: 16px;
+    align-self: start;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+  }
+  .detail-inner { padding: 24px; }
+
+  /* Masthead */
+  .d-rank-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .d-rank-num {
+    font-family: var(--mono);
+    color: var(--text-3);
+  }
+  .d-band-label { font-weight: 500; }
+  .d-band-label.strong { color: #047857; }
+  .d-band-label.medium { color: #b45309; }
+  .d-band-label.weak   { color: var(--text-3); }
+  .d-gap {
+    font-size: 11px;
+    color: var(--text-3);
+  }
+  .d-name {
+    margin-top: 6px;
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+  }
+  .d-file {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  /* Score split bar */
+  .score-block { margin-top: 20px; }
+  .score-headline {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .score-big {
+    font-family: var(--mono);
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1;
+  }
+  .score-label {
+    font-size: 11px;
+    color: var(--text-3);
+  }
+  .score-track {
+    margin-top: 12px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--bg);
+    overflow: hidden;
+    display: flex;
+  }
+  .score-kw {
+    height: 100%;
+    background: var(--accent);
+    transition: width .5s var(--ease-out-expo);
+  }
+  .score-sem {
+    height: 100%;
+    background: #93c5fd; /* blue-300 */
+    transition: width .5s var(--ease-out-expo);
+  }
+  .score-legend {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 11px;
+  }
+  .score-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .score-legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .score-legend-dot.kw { background: var(--accent); }
+  .score-legend-dot.sem { background: #93c5fd; }
+  .score-legend-val {
+    font-family: var(--mono);
+    color: var(--text);
+  }
+
+  /* Section separator */
+  .d-section {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .d-section-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-3);
+    margin-bottom: 14px;
+  }
+  .d-section-title .d-section-aside {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--text-4);
+    margin-left: 8px;
+  }
+
+  /* Requirement evidence */
+  .req-item + .req-item { margin-top: 16px; }
+  .req-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .req-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+  .req-weight {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-4);
+    flex-shrink: 0;
+  }
+  .req-state {
+    font-size: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .req-state.met { color: #047857; }
+  .req-state.partial { color: #b45309; }
+  .req-state.gap { color: var(--text-4); }
+  .req-cos {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-4);
+    width: 48px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .req-quote {
+    margin-top: 6px;
+    border-left: 2px solid;
+    padding-left: 12px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .req-quote.met { border-color: #34d399; }
+  .req-quote.partial { border-color: #fbbf24; }
+  .req-quote.gap { border-color: var(--border); }
+  .req-cite {
+    display: block;
+    margin-top: 4px;
+    font-size: 10.5px;
+    color: var(--text-4);
+    font-style: normal;
+  }
+  .req-empty {
+    margin-top: 6px;
+    border-left: 2px solid var(--border);
+    padding-left: 12px;
+    font-size: 12px;
+    color: var(--text-4);
+  }
+
+  /* Skills section in detail */
+  .skills-section + .skills-section { margin-top: 12px; }
+  .skills-heading {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--text-3);
+    margin-bottom: 8px;
+  }
+  .skill-evidence {
+    margin-top: 4px;
+  }
+  .skill-evidence-item {
+    margin-bottom: 10px;
+  }
+  .skill-evidence-name {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .skill-evidence-quote {
+    margin-top: 2px;
+    border-left: 2px solid #34d399;
+    padding-left: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-3);
+  }
+
+  /* Section similarity bars */
+  .sim-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sim-row + .sim-row { margin-top: 8px; }
+  .sim-name {
+    font-size: 11.5px;
+    color: var(--text-2);
+    width: 84px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sim-bar-wrap {
+    flex: 1;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--bg);
+    overflow: hidden;
+  }
+  .sim-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width .5s var(--ease-out-expo);
+  }
+  .sim-bar-fill.high { background: var(--accent); }
+  .sim-bar-fill.mid  { background: #93c5fd; }
+  .sim-bar-fill.low  { background: #d4d4d8; }
+  .sim-val {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-4);
+    width: 32px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  /* Highlight quote */
+  .highlight-quote {
+    margin-top: 16px;
+    border-left: 2px solid #d4d4d8;
+    padding-left: 12px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text-2);
+  }
+  .highlight-caption {
+    margin-top: 6px;
+    padding-left: 12px;
+    font-size: 10.5px;
+    color: var(--text-4);
+  }
+
+  /* ── Scrollbar ──────────────────────────────────────────── */
+  * { scrollbar-width: thin; scrollbar-color: #d4d4d8 transparent; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 9999px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+</style>
+</head>
+<body>
+
+<!-- ═══ Top Bar ═══ -->
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="app-name">Nexora</span>
+    <span class="breadcrumb-sep">/</span>
+    <h1 class="breadcrumb-item">Junior Full Stack Developer</h1>
+  </div>
+  <div class="topbar-actions">
+    <span class="topbar-meta">ranked in 4.2s · hybrid-v2-requirements</span>
+    <button class="btn-secondary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export CSV
+    </button>
+    <button class="btn-primary">New analysis</button>
+  </div>
+</header>
+
+<!-- ═══ Toolbar ═══ -->
+<div class="toolbar" id="toolbar">
+  <div class="toolbar-left">
+    <button class="chip-toggle" id="chip-jd" onclick="togglePanel('jd')">7 required · 1 nice-to-have</button>
+    <button class="chip-toggle warn" id="chip-bias" onclick="togglePanel('bias')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      2 bias flags
+    </button>
+  </div>
+  <p class="toolbar-legend">Strong ≥ 70 · Medium 45–69 · Weak &lt; 45 · scale 0–100</p>
+</div>
+
+<!-- Disclosure: JD -->
+<div class="disclosure" id="panel-jd" style="display:none">
+  <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:12px">
+    <p style="font-size:14px;font-weight:500;color:var(--text)">Junior Full Stack Developer</p>
+    <p style="font-size:12px;color:var(--text-3)">TechNova Solutions</p>
+  </div>
+  <div class="disclosure-grid">
+    <div>
+      <p class="disc-label">Required · weight ×3</p>
+      <div class="skill-wrap">
+        <span class="sc matched">javascript</span>
+        <span class="sc matched">react</span>
+        <span class="sc matched">node.js</span>
+        <span class="sc matched">mongodb</span>
+        <span class="sc matched">rest apis</span>
+        <span class="sc matched">git</span>
+        <span class="sc matched">html/css</span>
+      </div>
+    </div>
+    <div>
+      <p class="disc-label">Nice to have · ×1</p>
+      <div class="skill-wrap">
+        <span class="sc partial">express</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Disclosure: Bias -->
+<div class="disclosure" id="panel-bias" style="display:none">
+  <p class="disclosure-title">Bias &amp; pool health</p>
+  <div class="bias-grid">
+    <div>
+      <span class="bias-kind wording">JD wording</span>
+      <p class="bias-phrase">"rockstar coder who ships fast"</p>
+      <p class="bias-why">Casual, exclusionary phrasing. Self-selection bias: reads as a culture signal and reduces applications from qualified candidates.</p>
+      <p class="bias-fix"><b>Rewrite:</b> "skilled developer comfortable with rapid iteration"</p>
+    </div>
+    <div>
+      <span class="bias-kind scope">JD scope</span>
+      <p class="bias-phrase">11 skills listed as required</p>
+      <p class="bias-why">Long must-have list narrows the applicant pool. Docker, AWS, and TypeScript are trainable on the job for a junior role.</p>
+      <p class="bias-fix"><b>Suggested:</b> Move 3 skills to nice-to-have</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ Main Two-Column Layout ═══ -->
+<div class="layout">
+
+  <!-- Left: Ranked List -->
+  <main class="list-panel">
+    <div class="list-header">
+      <h2 class="list-title">Ranked candidates</h2>
+      <div class="band-filters">
+        <button class="band-btn active" onclick="filterBand('all',this)">All 18</button>
+        <button class="band-btn" onclick="filterBand('strong',this)">Strong 3</button>
+        <button class="band-btn" onclick="filterBand('medium',this)">Medium 2</button>
+        <button class="band-btn" onclick="filterBand('weak',this)">Weak 13</button>
+      </div>
+    </div>
+
+    <div class="list-body" id="list-body">
+      <!-- Strong band -->
+      <div class="band-header" data-band="strong">
+        <span class="band-dot strong"></span>
+        <span class="band-name strong">Strong</span>
+        <span class="band-count">3</span>
+      </div>
+
+      <button class="c-row active" onclick="selectCandidate(this, 0)" data-rank="1" data-band="strong">
+        <span class="c-rank">1</span>
+        <span class="c-band-dot" style="background:#10b981"></span>
+        <span class="c-name-col">
+          <span class="c-name">Ananya Sharma</span>
+          <span class="c-file">resume_07.pdf</span>
+        </span>
+        <span class="c-met">5/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar strong" style="width:87%"></span></span>
+        <span class="c-score">87.4</span>
+      </button>
+
+      <button class="c-row" onclick="selectCandidate(this, 1)" data-rank="2" data-band="strong">
+        <span class="c-rank">2</span>
+        <span class="c-band-dot" style="background:#10b981"></span>
+        <span class="c-name-col">
+          <span class="c-name">Rohan Mehta</span>
+          <span class="c-file">resume_03.pdf</span>
+        </span>
+        <span class="c-met">5/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar strong" style="width:82%"></span></span>
+        <span class="c-score">82.1</span>
+      </button>
+
+      <button class="c-row" onclick="selectCandidate(this, 2)" data-rank="3" data-band="strong">
+        <span class="c-rank">3</span>
+        <span class="c-band-dot" style="background:#10b981"></span>
+        <span class="c-name-col">
+          <span class="c-name">Priya Nair</span>
+          <span class="c-file">resume_12.pdf</span>
+        </span>
+        <span class="c-met">3/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar strong" style="width:79%"></span></span>
+        <span class="c-score">78.9</span>
+      </button>
+
+      <!-- Medium band -->
+      <div class="band-header" data-band="medium">
+        <span class="band-dot medium"></span>
+        <span class="band-name medium">Medium</span>
+        <span class="band-count">2</span>
+      </div>
+
+      <button class="c-row" onclick="selectCandidate(this, 3)" data-rank="4" data-band="medium">
+        <span class="c-rank">4</span>
+        <span class="c-band-dot" style="background:#f59e0b"></span>
+        <span class="c-name-col">
+          <span class="c-name">Arjun Deshpande</span>
+          <span class="c-file">resume_15.pdf</span>
+        </span>
+        <span class="c-met">2/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar medium" style="width:64%"></span></span>
+        <span class="c-score">64.2</span>
+      </button>
+
+      <button class="c-row" onclick="selectCandidate(this, 4)" data-rank="5" data-band="medium">
+        <span class="c-rank">5</span>
+        <span class="c-band-dot" style="background:#f59e0b"></span>
+        <span class="c-name-col">
+          <span class="c-name">Sneha Kulkarni</span>
+          <span class="c-file">resume_09.pdf</span>
+        </span>
+        <span class="c-met">1/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar medium" style="width:59%"></span></span>
+        <span class="c-score">58.7</span>
+      </button>
+
+      <!-- Weak band -->
+      <div class="band-header" data-band="weak">
+        <span class="band-dot weak"></span>
+        <span class="band-name weak">Weak</span>
+        <span class="band-count">13</span>
+      </div>
+
+      <button class="c-row" onclick="selectCandidate(this, 5)" data-rank="6" data-band="weak">
+        <span class="c-rank">6</span>
+        <span class="c-band-dot" style="background:#d4d4d8"></span>
+        <span class="c-name-col">
+          <span class="c-name">Vikram Iyer</span>
+          <span class="c-file">resume_02.pdf</span>
+        </span>
+        <span class="c-met">1/7 met</span>
+        <span class="c-bar-wrap"><span class="c-bar weak" style="width:51%"></span></span>
+        <span class="c-score">51.3</span>
+      </button>
+    </div>
+
+    <div class="list-footer">
+      <kbd>j</kbd> <kbd>k</kbd> to move through the ranking.
+    </div>
+  </main>
+
+  <!-- Right: Candidate Detail -->
+  <aside class="detail-panel" id="detail-panel">
+    <div class="detail-inner" id="detail-inner">
+      <!-- Filled by JS on selection -->
+    </div>
+  </aside>
+
+</div>
+
+<script>
+const candidates = [
+  {
+    rank: 1, name: "Ananya Sharma", file: "resume_07.pdf",
+    overall: 87.4, kw: 84.2, sem: 90.6, band: "strong",
+    matched: ["react","node.js","mongodb","rest apis","git"],
+    partial: ["express","typescript"],
+    missing: ["docker","aws"],
+    requirements: [
+      { req: "React frontend development", kind: "required", sim: 0.82, state: "met", line: "Built interactive UIs with React and Redux for three production projects", section: "Projects" },
+      { req: "Node.js backend", kind: "required", sim: 0.79, state: "met", line: "Built and deployed REST APIs with Express and MongoDB for a campus food-delivery app used by 2,000+ students", section: "Projects" },
+      { req: "MongoDB data modelling", kind: "required", sim: 0.74, state: "met", line: "Designed MongoDB schemas for user, order, and restaurant collections with proper indexing", section: "Projects" },
+      { req: "REST API design", kind: "required", sim: 0.71, state: "met", line: "Built and deployed REST APIs with Express and MongoDB for a campus food-delivery app", section: "Projects" },
+      { req: "Version control with Git", kind: "required", sim: 0.68, state: "met", line: "Managed team workflow with Git branching, pull requests, and CI/CD pipelines", section: "Experience" },
+      { req: "Docker containerisation", kind: "nice", sim: 0.31, state: "gap", line: null, section: null },
+      { req: "AWS cloud deployment", kind: "nice", sim: 0.22, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.82 },
+      { name: "Experience", sim: 0.79 },
+      { name: "Skills", sim: 0.74 },
+      { name: "Education", sim: 0.31 },
+    ],
+    highlight: "Built and deployed REST APIs with Express and MongoDB for a campus food-delivery app used by 2,000+ students.",
+    skillEvidence: {
+      "react": "Built interactive UIs with React and Redux for three production projects",
+      "node.js": "Server-side logic in Node.js with Express framework",
+      "mongodb": "Designed MongoDB schemas for user, order, and restaurant collections",
+      "rest apis": "Built and deployed REST APIs with Express and MongoDB",
+      "git": "Managed team workflow with Git branching, pull requests, and CI/CD pipelines",
+    }
+  },
+  {
+    rank: 2, name: "Rohan Mehta", file: "resume_03.pdf",
+    overall: 82.1, kw: 88.5, sem: 75.7, band: "strong",
+    matched: ["javascript","react","node.js","git","html/css"],
+    partial: ["mongodb"],
+    missing: ["docker","aws","typescript"],
+    requirements: [
+      { req: "JavaScript proficiency", kind: "required", sim: 0.88, state: "met", line: "Proficient in ES6+ JavaScript, TypeScript, and modern build tooling", section: "Skills" },
+      { req: "React frontend development", kind: "required", sim: 0.81, state: "met", line: "Developed a full-stack React + Node.js task manager deployed on Render with JWT auth", section: "Projects" },
+      { req: "Node.js backend", kind: "required", sim: 0.72, state: "met", line: "Server-side rendering and API routes with Node.js and Express", section: "Projects" },
+      { req: "Version control with Git", kind: "required", sim: 0.70, state: "met", line: "Git-based workflow with feature branches and code review", section: "Experience" },
+      { req: "HTML/CSS web development", kind: "required", sim: 0.65, state: "met", line: "Responsive layouts with CSS Grid, Flexbox, and Tailwind CSS", section: "Skills" },
+      { req: "MongoDB data modelling", kind: "required", sim: 0.45, state: "partial", line: "Database coursework covering relational and document stores", section: "Education" },
+      { req: "Docker containerisation", kind: "nice", sim: 0.28, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.68 },
+      { name: "Experience", sim: 0.72 },
+      { name: "Skills", sim: 0.81 },
+      { name: "Education", sim: 0.28 },
+    ],
+    highlight: "Developed a full-stack React + Node.js task manager deployed on Render with JWT auth and role-based access.",
+    skillEvidence: {
+      "javascript": "Proficient in ES6+ JavaScript, TypeScript, and modern build tooling",
+      "react": "Developed a full-stack React + Node.js task manager with JWT auth",
+      "node.js": "Server-side rendering and API routes with Node.js and Express",
+      "git": "Git-based workflow with feature branches and code review",
+      "html/css": "Responsive layouts with CSS Grid, Flexbox, and Tailwind CSS",
+    }
+  },
+  {
+    rank: 3, name: "Priya Nair", file: "resume_12.pdf",
+    overall: 78.9, kw: 71.3, sem: 86.5, band: "strong",
+    matched: ["react","javascript","rest apis"],
+    partial: ["node.js"],
+    missing: ["mongodb","docker","aws"],
+    requirements: [
+      { req: "React frontend development", kind: "required", sim: 0.86, state: "met", line: "React frontends for an internal analytics dashboard handling 50k daily users", section: "Experience" },
+      { req: "JavaScript proficiency", kind: "required", sim: 0.78, state: "met", line: "Server-side JavaScript with Handlebars templating", section: "Experience" },
+      { req: "REST API design", kind: "required", sim: 0.65, state: "met", line: "Consumed and extended RESTful endpoints for data aggregation", section: "Projects" },
+      { req: "Node.js backend", kind: "required", sim: 0.52, state: "partial", line: "Server-side JavaScript with Handlebars templating", section: "Experience" },
+      { req: "MongoDB data modelling", kind: "required", sim: 0.30, state: "gap", line: null, section: null },
+      { req: "Docker containerisation", kind: "nice", sim: 0.22, state: "gap", line: null, section: null },
+      { req: "AWS cloud deployment", kind: "nice", sim: 0.18, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.77 },
+      { name: "Experience", sim: 0.65 },
+      { name: "Skills", sim: 0.58 },
+      { name: "Education", sim: 0.34 },
+    ],
+    highlight: "Server-side JavaScript with Handlebars templating and React frontends for an internal analytics dashboard.",
+    skillEvidence: {
+      "react": "React frontends for an internal analytics dashboard handling 50k daily users",
+      "javascript": "Server-side JavaScript with Handlebars templating",
+      "rest apis": "Consumed and extended RESTful endpoints for data aggregation",
+    }
+  },
+  {
+    rank: 4, name: "Arjun Deshpande", file: "resume_15.pdf",
+    overall: 64.2, kw: 66.8, sem: 61.6, band: "medium",
+    matched: ["javascript","html/css"],
+    partial: ["react"],
+    missing: ["node.js","mongodb","rest apis"],
+    requirements: [
+      { req: "JavaScript proficiency", kind: "required", sim: 0.66, state: "met", line: "Built responsive portfolio sites with vanilla JS and CSS Grid", section: "Projects" },
+      { req: "HTML/CSS web development", kind: "required", sim: 0.63, state: "met", line: "Semantic HTML5 and accessible CSS layouts for local business sites", section: "Projects" },
+      { req: "React frontend development", kind: "required", sim: 0.48, state: "partial", line: "Tutorial-level React projects on GitHub", section: "Projects" },
+      { req: "Node.js backend", kind: "required", sim: 0.28, state: "gap", line: null, section: null },
+      { req: "MongoDB data modelling", kind: "required", sim: 0.22, state: "gap", line: null, section: null },
+      { req: "REST API design", kind: "required", sim: 0.20, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.55 },
+      { name: "Experience", sim: 0.48 },
+      { name: "Skills", sim: 0.62 },
+      { name: "Education", sim: 0.27 },
+    ],
+    highlight: "Created responsive portfolio sites with vanilla JS and CSS Grid for three local businesses.",
+    skillEvidence: {
+      "javascript": "Built responsive portfolio sites with vanilla JS and CSS Grid",
+      "html/css": "Semantic HTML5 and accessible CSS layouts for local business sites",
+    }
+  },
+  {
+    rank: 5, name: "Sneha Kulkarni", file: "resume_09.pdf",
+    overall: 58.7, kw: 52.4, sem: 65.0, band: "medium",
+    matched: ["git"],
+    partial: ["javascript"],
+    missing: ["react","node.js","mongodb","rest apis"],
+    requirements: [
+      { req: "Version control with Git", kind: "required", sim: 0.62, state: "met", line: "Contributed to an open-source Git workflow tool with 400+ stars on GitHub", section: "Projects" },
+      { req: "JavaScript proficiency", kind: "required", sim: 0.44, state: "partial", line: "Basic JavaScript for DOM manipulation in coursework", section: "Education" },
+      { req: "React frontend development", kind: "required", sim: 0.25, state: "gap", line: null, section: null },
+      { req: "Node.js backend", kind: "required", sim: 0.22, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.49 },
+      { name: "Experience", sim: 0.41 },
+      { name: "Skills", sim: 0.53 },
+      { name: "Education", sim: 0.30 },
+    ],
+    highlight: "Contributed to an open-source Git workflow tool with 400+ stars on GitHub.",
+    skillEvidence: { "git": "Contributed to an open-source Git workflow tool with 400+ stars on GitHub" }
+  },
+  {
+    rank: 6, name: "Vikram Iyer", file: "resume_02.pdf",
+    overall: 51.3, kw: 48.9, sem: 53.7, band: "weak",
+    matched: ["html/css"],
+    partial: ["git"],
+    missing: ["javascript","react","node.js"],
+    requirements: [
+      { req: "HTML/CSS web development", kind: "required", sim: 0.60, state: "met", line: "Built a responsive college event website with HTML5, CSS3, and Bootstrap", section: "Projects" },
+      { req: "Version control with Git", kind: "required", sim: 0.42, state: "partial", line: "Used GitHub for project submission and basic versioning", section: "Education" },
+      { req: "JavaScript proficiency", kind: "required", sim: 0.30, state: "gap", line: null, section: null },
+      { req: "React frontend development", kind: "required", sim: 0.18, state: "gap", line: null, section: null },
+    ],
+    sections: [
+      { name: "Projects", sim: 0.38 },
+      { name: "Experience", sim: 0.35 },
+      { name: "Skills", sim: 0.44 },
+      { name: "Education", sim: 0.22 },
+    ],
+    highlight: "Built a responsive college event website with HTML5, CSS3, and Bootstrap.",
+    skillEvidence: { "html/css": "Built a responsive college event website with HTML5, CSS3, and Bootstrap" }
+  },
+];
+
+const WEIGHT = { required: "×3", responsibility: "×2", nice: "×1" };
+const BAND_LABEL = { strong: "Strong", medium: "Medium", weak: "Weak" };
+
+function selectCandidate(el, idx) {
+  document.querySelectorAll('.c-row').forEach(r => r.classList.remove('active'));
+  el.classList.add('active');
+  renderDetail(idx);
+}
+
+function renderDetail(idx) {
+  const c = candidates[idx];
+  const topOverall = candidates[0].overall;
+  const gap = topOverall - c.overall;
+  const kwHalf = c.kw / 2;
+  const semHalf = c.sem / 2;
+
+  let html = '';
+
+  // Masthead
+  html += `<div class="d-rank-line">`;
+  html += `<span class="d-rank-num">#${String(c.rank).padStart(2,'0')}</span>`;
+  html += `<span class="c-band-dot" style="background:${c.band==='strong'?'#10b981':c.band==='medium'?'#f59e0b':'#d4d4d8'}"></span>`;
+  html += `<span class="d-band-label ${c.band}">${BAND_LABEL[c.band]} match</span>`;
+  if (gap > 0.05) html += `<span class="d-gap">· ${gap.toFixed(1)} behind rank 1</span>`;
+  html += `</div>`;
+  html += `<h2 class="d-name">${c.name}</h2>`;
+  html += `<p class="d-file">${c.file}</p>`;
+
+  // Score split
+  html += `<div class="score-block">`;
+  html += `<div class="score-headline">`;
+  html += `<span class="score-big">${c.overall.toFixed(1)}</span>`;
+  html += `<span class="score-label">overall, out of 100</span>`;
+  html += `</div>`;
+  html += `<div class="score-track">`;
+  html += `<div class="score-kw" style="width:${kwHalf}%"></div>`;
+  html += `<div class="score-sem" style="width:${semHalf}%"></div>`;
+  html += `</div>`;
+  html += `<div class="score-legend">`;
+  html += `<span class="score-legend-item"><span class="score-legend-dot kw"></span><span style="color:var(--text-3)">keyword</span> <span class="score-legend-val">${c.kw.toFixed(1)}</span></span>`;
+  html += `<span class="score-legend-item"><span class="score-legend-dot sem"></span><span style="color:var(--text-3)">semantic</span> <span class="score-legend-val">${c.sem.toFixed(1)}</span></span>`;
+  html += `</div></div>`;
+
+  // Requirement evidence
+  html += `<div class="d-section">`;
+  html += `<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">`;
+  html += `<h3 class="d-section-title" style="margin-bottom:0">Requirement-by-requirement</h3>`;
+  const metCount = c.requirements.filter(r => r.state === 'met').length;
+  html += `<span style="font-family:var(--mono);font-size:10px;color:var(--text-4)">${metCount}/${c.requirements.length} met</span>`;
+  html += `</div>`;
+  html += `<div style="margin-top:14px">`;
+  c.requirements.forEach(r => {
+    html += `<div class="req-item">`;
+    html += `<div class="req-header">`;
+    html += `<span class="req-name">${r.req}</span>`;
+    if (r.kind && WEIGHT[r.kind]) html += `<span class="req-weight">${WEIGHT[r.kind]}</span>`;
+    html += `<span class="req-state ${r.state}">${r.state}</span>`;
+    html += `<span class="req-cos">cos ${r.sim.toFixed(2)}</span>`;
+    html += `</div>`;
+    if (r.line) {
+      html += `<blockquote class="req-quote ${r.state}">\u201c${r.line}\u201d<cite class="req-cite">${c.file} · ${r.section}</cite></blockquote>`;
+    } else {
+      html += `<p class="req-empty">No line in this resume addressed it.</p>`;
+    }
+    html += `</div>`;
+  });
+  html += `</div></div>`;
+
+  // Skills
+  html += `<div class="d-section">`;
+  if (c.matched.length > 0) {
+    html += `<div class="skills-section"><h3 class="skills-heading">Matched · ${c.matched.length}</h3>`;
+    html += `<div class="skill-evidence">`;
+    c.matched.forEach(s => {
+      html += `<div class="skill-evidence-item"><p class="skill-evidence-name">${s}</p>`;
+      if (c.skillEvidence[s]) html += `<blockquote class="skill-evidence-quote">\u201c${c.skillEvidence[s]}\u201d</blockquote>`;
+      html += `</div>`;
+    });
+    html += `</div></div>`;
+  }
+  if (c.partial.length > 0) {
+    html += `<div class="skills-section"><h3 class="skills-heading">Partial · ${c.partial.length}</h3>`;
+    html += `<div class="skill-wrap">`;
+    c.partial.forEach(s => html += `<span class="sc partial">${s}</span>`);
+    html += `</div></div>`;
+  }
+  if (c.missing.length > 0) {
+    html += `<div class="skills-section"><h3 class="skills-heading">Missing · ${c.missing.length}</h3>`;
+    html += `<div class="skill-wrap">`;
+    c.missing.forEach(s => html += `<span class="sc missing">${s}</span>`);
+    html += `</div></div>`;
+  }
+  html += `</div>`;
+
+  // Section similarity
+  html += `<div class="d-section">`;
+  html += `<h3 class="d-section-title">Where the resume matched<span class="d-section-aside">cosine, 0–1</span></h3>`;
+  c.sections.forEach(s => {
+    const cls = s.sim >= 0.6 ? 'high' : s.sim >= 0.35 ? 'mid' : 'low';
+    html += `<div class="sim-row"><span class="sim-name">${s.name}</span>`;
+    html += `<div class="sim-bar-wrap"><div class="sim-bar-fill ${cls}" style="width:${s.sim*100}%"></div></div>`;
+    html += `<span class="sim-val">${s.sim.toFixed(2)}</span></div>`;
+  });
+  if (c.highlight) {
+    html += `<blockquote class="highlight-quote">\u201c${c.highlight}\u201d</blockquote>`;
+    html += `<p class="highlight-caption">Strongest single line in the resume</p>`;
+  }
+  html += `</div>`;
+
+  document.getElementById('detail-inner').innerHTML = html;
+}
+
+// Toolbar disclosure toggles
+function togglePanel(id) {
+  const panel = document.getElementById('panel-' + id);
+  const chip = document.getElementById('chip-' + id);
+  const isOpen = panel.style.display !== 'none';
+  // Close all panels first
+  document.querySelectorAll('.disclosure').forEach(d => d.style.display = 'none');
+  document.querySelectorAll('.chip-toggle').forEach(c => c.classList.remove('active'));
+  if (!isOpen) {
+    panel.style.display = '';
+    chip.classList.add('active');
+  }
+}
+
+// Band filter
+function filterBand(band, btn) {
+  document.querySelectorAll('.band-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.c-row').forEach(row => {
+    row.style.display = (band === 'all' || row.dataset.band === band) ? '' : 'none';
+  });
+  document.querySelectorAll('.band-header').forEach(h => {
+    h.style.display = (band === 'all' || h.dataset.band === band) ? '' : 'none';
+  });
+}
+
+// Keyboard navigation (j/k)
+document.addEventListener('keydown', e => {
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  const rows = [...document.querySelectorAll('.c-row')].filter(r => r.style.display !== 'none');
+  const activeIdx = rows.findIndex(r => r.classList.contains('active'));
+  if (e.key === 'j' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    const next = Math.min(activeIdx + 1, rows.length - 1);
+    rows[next].click();
+    rows[next].scrollIntoView({ block: 'nearest' });
+  }
+  if (e.key === 'k' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    const prev = Math.max(activeIdx - 1, 0);
+    rows[prev].click();
+    rows[prev].scrollIntoView({ block: 'nearest' });
+  }
+});
+
+// Init: render first candidate
+renderDetail(0);
+</script>
+
+</body>
+</html>
