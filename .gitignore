@@ -151,3 +151,11 @@ temp/
 
 # E2E spot-check scratch (throwaway)
 .pwtest/
+
+# ------------------------------------------------------------------------------
+# Frontend negations
+# ------------------------------------------------------------------------------
+# The Python `lib/` and `.env.*` patterns above are broader than intended and
+# must not hide frontend source. (Additive-only, per FRONTEND_SPEC §6.)
+!frontend/src/lib/
+!frontend/.env.live.example

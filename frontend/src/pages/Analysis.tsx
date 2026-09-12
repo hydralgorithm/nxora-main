@@ -10,10 +10,23 @@ interface Props {
 
 type JdMode = 'file' | 'text'
 
+const MAX_RESUMES = 50
+
+// Pre-filled so a judge can demo in one click (FRONTEND_SPEC §3a). Contains a
+// biased phrase + an over-constrained must-have list on purpose — it lights up
+// the bias audit on the results screen.
+const SAMPLE_JD = `Junior Full Stack Developer — TechNova Solutions
+
+We're looking for a rockstar coder who ships fast. You'll build responsive interfaces with React, write server-side logic in Node.js, design and consume REST APIs, and work with MongoDB data models alongside a small product team.
+
+Requirements: JavaScript, React, Node.js, MongoDB, REST APIs, Git, HTML/CSS, Docker, AWS, TypeScript.
+Nice to have: Express.
+0–2 years of experience — juniors encouraged to apply.`
+
 export default function AnalysisScreen({ onComplete, onCancel }: Props) {
   const [jdMode, setJdMode] = useState<JdMode>('file')
   const [jdFile, setJdFile] = useState<File | null>(null)
-  const [jdText, setJdText] = useState('')
+  const [jdText, setJdText] = useState(SAMPLE_JD)
   const [resumes, setResumes] = useState<File[]>([])
   const [jdDrag, setJdDrag] = useState(false)
   const [resDrag, setResDrag] = useState(false)
@@ -52,7 +65,9 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
     if (!files) return
     setResumes((prev) => {
       const seen = new Set(prev.map((f) => f.name + f.size))
-      return [...prev, ...Array.from(files).filter((f) => !seen.has(f.name + f.size))]
+      const fresh = Array.from(files).filter((f) => !seen.has(f.name + f.size))
+      // Hard client-side cap (FRONTEND_SPEC §5: backend 400s above 50).
+      return [...prev, ...fresh].slice(0, MAX_RESUMES)
     })
   }
 
@@ -81,6 +96,9 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
           <p className="font-mono text-[11px] text-zinc-500 mt-5">
             {elapsed.toFixed(1)}s elapsed · hybrid engine · local
           </p>
+          <p className="text-[11px] text-zinc-400 mt-1">
+            Takes 2–8s warm. First run after a server start loads the AI models — up to 20s.
+          </p>
         </div>
       </main>
     )
@@ -104,8 +122,17 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
         </div>
 
         {error && (
-          <div className="mb-4 rounded-[10px] border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
-            {error}
+          <div className="mb-4 flex items-start gap-3 rounded-[10px] border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+            <p className="flex-1">{error}</p>
+            <button
+              onClick={() => setError(null)}
+              className="text-rose-400 hover:text-rose-700 transition-colors shrink-0"
+              aria-label="Dismiss error"
+            >
+              <svg viewBox="0 0 16 16" className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <path d="M4 4l8 8M12 4l-8 8" />
+              </svg>
+            </button>
           </div>
         )}
 
@@ -176,7 +203,7 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
           <input
             ref={jdInputRef}
             type="file"
-            accept=".pdf,.txt,.doc,.docx"
+            accept=".pdf,.docx,.txt,.xml"
             className="hidden"
             onChange={(e) => setJdFile(e.target.files?.[0] ?? null)}
           />
@@ -189,7 +216,7 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
               Resumes
               {resumes.length > 0 && (
                 <span className="ml-2 font-mono text-[11px] font-normal text-zinc-500">
-                  {resumes.length} selected
+                  {resumes.length} / {MAX_RESUMES} files
                 </span>
               )}
             </h2>
@@ -210,12 +237,12 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
                 : 'border-zinc-300 text-zinc-500 hover:border-zinc-400 hover:text-zinc-600'
             }`}
           >
-            Drop resume PDFs here, or click to browse — select as many as you need
+            Drop resumes here, or click to browse — up to {MAX_RESUMES} files
           </button>
           <input
             ref={resInputRef}
             type="file"
-            accept=".pdf,.txt,.doc,.docx"
+            accept=".pdf,.docx,.doc,.xml,.html,.txt"
             multiple
             className="hidden"
             onChange={(e) => addResumes(e.target.files)}
@@ -257,7 +284,7 @@ export default function AnalysisScreen({ onComplete, onCancel }: Props) {
                 : 'bg-zinc-200 text-zinc-400 cursor-not-allowed'
             }`}
           >
-            Shortlist candidates
+            Analyze & Rank
           </button>
         </div>
       </div>

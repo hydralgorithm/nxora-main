@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'motion/react'
 import type { Candidate } from '../lib/types'
 import { SkillChipGroup } from './SkillChips'
 import { NumberTicker } from './NumberTicker'
+import { IconAlert } from './Icon'
 
 interface Props {
   candidate: Candidate
@@ -41,24 +42,43 @@ function BigBar({
 
 export default function CandidateDetail({ candidate: c, topOverall }: Props) {
   const reduced = useReducedMotion()
+
   return (
     <div className="bg-white rounded-[10px] border border-zinc-200 p-4 lg:sticky lg:top-4">
       {/* Header */}
       <div className="flex items-start gap-3">
         <span
           className={`flex items-center justify-center w-8 h-8 rounded-[8px] font-mono text-sm font-semibold shrink-0 ${
-            c.rank === 1
-              ? 'bg-blue-600 text-white'
-              : 'bg-zinc-100 text-zinc-600'
+            c.rank === 1 ? 'bg-blue-600 text-white' : 'bg-zinc-100 text-zinc-600'
           }`}
         >
           {c.rank}
         </span>
-        <div className="min-w-0">
-          <h2 className="text-xl font-semibold tracking-tight truncate">{c.name}</h2>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <h2 className="text-xl font-semibold tracking-tight truncate">{c.name}</h2>
+            <span
+              className={`text-[10px] font-medium px-1.5 py-0.5 rounded shrink-0 ${
+                c.band === 'strong'
+                  ? 'bg-emerald-100 text-emerald-700'
+                  : c.band === 'medium'
+                    ? 'bg-amber-100 text-amber-700'
+                    : 'bg-zinc-100 text-zinc-500'
+              }`}
+            >
+              {c.band}
+            </span>
+          </div>
           <p className="font-mono text-[11px] text-zinc-500 truncate">{c.file}</p>
         </div>
       </div>
+
+      {c.parse_warning && (
+        <div className="mt-3 flex gap-2 rounded-md bg-amber-50 border border-amber-100 px-3 py-2 text-xs text-amber-800">
+          <IconAlert className="w-3.5 h-3.5 mt-px shrink-0" />
+          <p>{c.parse_warning}</p>
+        </div>
+      )}
 
       {c.rank === 1 && (
         <div className="mt-3 rounded-md bg-blue-50 border border-blue-100 px-3 py-2 text-xs text-blue-800">
@@ -90,27 +110,85 @@ export default function CandidateDetail({ candidate: c, topOverall }: Props) {
         </div>
       )}
 
-      {/* Skills */}
+      {/* Requirement evidence — the centerpiece: every JD requirement mapped to
+          this candidate's best matching resume line (FRONTEND_SPEC §3c). */}
+      {c.requirement_evidence.length > 0 && (
+        <div className="mt-4 pt-4 border-t border-zinc-100">
+          <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-2.5">
+            Requirement-by-requirement
+          </h3>
+          <ul className="space-y-3">
+            {c.requirement_evidence.map((r) => (
+              <li key={r.requirement}>
+                <div className="flex items-center gap-2">
+                  <p className="text-[12px] text-zinc-800 font-medium flex-1">{r.requirement}</p>
+                  <span className="font-mono text-[10px] text-zinc-500 shrink-0">
+                    {(r.similarity * 100).toFixed(0)}%
+                  </span>
+                </div>
+                <div className="h-1 rounded-full bg-zinc-100 overflow-hidden mt-1">
+                  <motion.div
+                    className={`h-full rounded-full ${
+                      r.similarity >= 0.6
+                        ? 'bg-violet-500'
+                        : r.similarity >= 0.4
+                          ? 'bg-amber-400'
+                          : 'bg-zinc-300'
+                    }`}
+                    initial={reduced ? false : { width: 0 }}
+                    animate={{ width: `${r.similarity * 100}%` }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                </div>
+                <blockquote className="mt-1.5 text-[11px] leading-relaxed text-zinc-500">
+                  “{r.line}” <span className="text-zinc-400">— {r.section}</span>
+                </blockquote>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Skills — matched skills carry their evidence line from the resume */}
       <div className="mt-4 space-y-3">
-        {(
-          [
-            ['Matched', c.matched_skills, 'matched'],
-            ['Partial', c.partial_skills, 'partial'],
-            ['Missing', c.missing_skills, 'missing'],
-          ] as const
-        ).map(([label, skills, variant]) =>
-          skills.length > 0 ? (
-            <div key={label}>
-              <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-1.5">
-                {label} · {skills.length}
-              </h3>
-              <SkillChipGroup skills={skills} variant={variant} max={10} />
-            </div>
-          ) : null,
+        {c.matched_skills.length > 0 && (
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-1.5">
+              Matched · {c.matched_skills.length}
+            </h3>
+            <ul className="space-y-2">
+              {c.matched_skills.map((s) => (
+                <li key={s}>
+                  <p className="text-[12px] font-medium text-emerald-700">{s}</p>
+                  {c.skill_evidence[s] && (
+                    <blockquote className="text-[11px] leading-relaxed text-zinc-500 mt-0.5">
+                      “{c.skill_evidence[s]}”
+                    </blockquote>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {c.partial_skills.length > 0 && (
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-1.5">
+              Partial · {c.partial_skills.length}
+            </h3>
+            <SkillChipGroup skills={c.partial_skills} variant="partial" max={10} />
+          </div>
+        )}
+        {c.missing_skills.length > 0 && (
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-1.5">
+              Missing · {c.missing_skills.length}
+            </h3>
+            <SkillChipGroup skills={c.missing_skills} variant="missing" max={10} />
+          </div>
         )}
       </div>
 
-      {/* Evidence */}
+      {/* Section similarity + highlight */}
       {c.evidence.sections.length > 0 && (
         <div className="mt-4 pt-4 border-t border-zinc-100">
           <h3 className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 mb-2">
