@@ -1,0 +1,150 @@
+# ==============================================================================
+# Git Ignore Configuration
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Graft
+# ------------------------------------------------------------------------------
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# ------------------------------------------------------------------------------
+# AI Coding Assistants & Tools
+# ------------------------------------------------------------------------------
+.claude/
+.cursor/
+.gemini/
+.grok/
+.kiro/
+.serena/
+.windsurf/
+.adal/
+.cline/
+.roo/
+.continue/
+.aider*
+.copilot/
+.supermaven/
+.agents/
+.mcp.json
+mcp.json
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.cert
+*.crt
+credentials.json
+secrets.json
+
+# ------------------------------------------------------------------------------
+# Operating System Files
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+
+# ------------------------------------------------------------------------------
+# IDEs & Code Editors
+# ------------------------------------------------------------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ------------------------------------------------------------------------------
+# Python & Data Science
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# Node.js & Web
+# ------------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+.next/
+.nuxt/
+out/
+
+# ------------------------------------------------------------------------------
+# Logs, Databases & Temporary Files
+# ------------------------------------------------------------------------------
+logs/
+*.log
+*.sqlite
+*.sqlite3
+*.db
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.cache
